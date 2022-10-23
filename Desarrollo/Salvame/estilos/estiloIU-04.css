@@ -1,0 +1,273 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Forum&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Megrim&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Estilo de cabecera */
+header {
+  display: flex;
+  height: 60px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #593920;
+}
+.nav-logo {
+  display: flex;
+}
+.nav-logo img {
+  height: 60px;
+}
+
+.boton {
+  padding: 10px;
+  margin: 10px;
+  background: #7cc67b;
+  border-radius: 8px;
+  text-decoration: none;
+  color: white;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Estilos de section */
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+section h1 {
+  font-family: "Megrim", cursive;
+  font-weight: 500;
+  font-size: 5.5vw;
+  color: #593920;
+}
+
+/* Barra de progreso*/
+.barraDeProgreso{
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  counter-reset: step;
+  margin: 2rem 0 4rem;
+}
+
+.barraDeProgreso::before,
+.progreso{
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 4px;
+  width: 100%;
+  background-color: #C4FBA3;
+  z-index: -1;
+}
+
+.progreso{
+  background-color: #5BDA59;
+  width: 0%;
+  transition: 0.3s;
+}
+
+.paso-progreso{
+  width: 7.5vw;
+  height: 7.5vw;
+  background-color: #C4FBA3  ;
+  border-radius: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.paso-progreso::before{
+  counter-increment: step;
+  content: counter(step);
+  font-size: 5vw;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.paso-progreso::after{
+  font-family: "Poppins", sans-serif;
+  content: attr(data-tittle);
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  font-size: 1.8vw;
+  color: #131313;
+}
+
+.paso-progreso-activo{
+  background-color: #5BDA59;
+  color: rgb(0, 0, 0);
+}
+
+/*Formulario */
+.form{
+  width: clamp(70vw, 50%, 100vw);
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.paso-formulario{
+  display: none;
+  transform-origin: top;
+  animation: animate 0.5s;
+}
+
+.paso-formulario-activo{
+  display: block;
+}
+
+@keyframes animate {
+  from{
+    transform: scale(1,0);
+    opacity: 0;
+  }  
+  to{
+    transform: scale(1,1);
+    opacity: 1;
+  }
+}
+
+/* Fondo */
+.contenedor{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: clamp(70vw, 50%, 100vw);
+  margin: 15% auto 9% auto;
+  background-color: #D9D9D9;
+  border-radius: 2.5vw;
+  z-index: 1;
+}
+
+.borde{
+  position: absolute;
+  z-index: 2;
+  width: clamp(20vw, 63%, 80vw);
+  height: clamp(30vw, 20%, 70vw);
+  border-radius: 1.5vw;
+  border-color: #131313;
+  border-style: dashed;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.contenedor img{
+  z-index: 1;
+  width: 100%;
+  border-radius: 2.5vw;
+  opacity: 0.3;
+}
+
+.nube-contenedor{
+  width: 8vh;
+  z-index: 3;
+}
+
+.nube-contenedor img{
+  width: 100%;
+  opacity: 1;
+}
+
+.texto{
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 2.5vw;
+}
+
+input{
+  display: none;
+}
+
+.boton-archivo label{
+  padding: 10px;
+  margin: 10px;
+  border-radius: 8px;
+  background-color: #5BDA59;
+  color: black;
+  font-family: "Poppins", sans-serif;
+  font-size: 2vw;
+  cursor: pointer;
+}
+
+.botones{
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.boton-archivo label:hover{
+  background-color: #7cc67b;
+}
+
+.boton-siguiente{
+  font-size: 2vw;
+}
+.boton-anterior{
+  font-size: 2vw;
+}
+
+/* Footer */
+footer {
+  background-color: #ffffb5;
+  margin-top: auto;
+}
+.footer {
+  padding: 30px 0;
+  display: flex;
+  justify-content: space-evenly;
+  border-bottom: solid 1px #593920;
+}
+.footer div {
+  font-family: "Forum", cursive;
+  width: 180px;
+}
+.integrantes {
+  margin: 10px 0;
+  list-style: none;
+  font-family: "Forum", cursive;
+  color: #593920;
+}
+
+.redes a img {
+  background-color: white;
+  padding: 5px;
+  margin: 5px 10px;
+  border: none;
+  border-radius: 10px;
+}
+.redes a img:hover {
+  background-color: #7bc67b;
+}
+
+.footer-datos {
+  list-style: none;
+  margin: 10px 0;
+}
+.footer-datos a {
+  color: #593920;
+  text-decoration: none;
+}
+
+footer p {
+  margin-top: 30px;
+  color: #593920;
+  text-align: center;
+}
