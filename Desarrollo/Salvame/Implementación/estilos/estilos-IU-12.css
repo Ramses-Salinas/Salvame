@@ -109,17 +109,19 @@ body {
 	background: #ffffb5;
 }
 /* FIN DE SOLO DEL PRIMERO*/
-/*FOTO DE PERFIL USUARIOOOOOOOOOOOOOOOOOOOOO*/
+/*FOTO DE PERFIL USUARIOOO*/
 .foto-perfil{
+  background-color: #ffffb5;
+  height: 160px;
+  width: 120px;
   border-radius: 50%;
-  overflow:hidden;
+  overflow: hidden;
   margin-top: 20px;
-  background: #ffffb5;
 }
 .btn-img{
   display: none;
 }
-/*FIN FOTO DE PERFIL USUARIOOOOOOOOOOOOOOOO*/
+/*FIN FOTO DE PERFIL USUARIOOOOOO*/
 
 
 .clase-nombre-archivo p {

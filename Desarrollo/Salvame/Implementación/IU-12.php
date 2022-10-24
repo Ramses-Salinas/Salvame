@@ -6,15 +6,6 @@ entonces nos dirige al index*/
 if (!isset($_SESSION['id_usuario'])) {
 }
 
-
-
-
-
-
-
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -34,12 +25,15 @@ if (!isset($_SESSION['id_usuario'])) {
         <div class="parte-1">
             <h2>| Sálvame</h2>
             <a href="./index.php">Inicio</a>
+            <!--SE PUDE MEHJORAR-->
+            <div class="foto-perfil">
+                <img id="view-new-upload-image" width="100%" height="100%" src="./imagenes/img-subir-foto.png" />
+            </div>
         </div>
-
 
         <div class="parte-2">
             <form action="">
-                <!-- DIV DE ARIANAAA-->
+                <!-- IU-11 -->
                 <div class="pagina movPag">
                     <h3>REGíSTRATE</h3>
                     <input type="text" name="" id="user" placeholder="🙍 Nombre" />
@@ -66,7 +60,7 @@ if (!isset($_SESSION['id_usuario'])) {
                     <input type="button" class="sigPag2" value="Siguiente" />
                 </div>
 
-                <!-- PARA DOCUMENTO DE IDENTIDAD -->
+                <!-- IU-12 DOC DE IDENTIDAD -->
                 <div class="pagina">
                     <h3>DOCUMENTO DE IDENTIDAD</h3>
                     <label id="label-nombre" for="nombre-doc">Nombre</label>
@@ -90,7 +84,7 @@ if (!isset($_SESSION['id_usuario'])) {
                     <input type="button" class="sigPag3" value="Siguiente" />
                 </div>
 
-                <!-- PARA CERTIFICADO ONG -->
+                <!-- IU-13 CERTIFICADO ONG -->
                 <div class="pagina">
                     <h3>CERTIFICADO ONG</h3>
                     <label for="nombre-doc">Nombre</label>
@@ -111,25 +105,28 @@ if (!isset($_SESSION['id_usuario'])) {
                     <br>
                     <input type="button" class="antPag2" value="Anterior"
                         style="background-color: rgba(54,50,10,65%)" />
-                    <a href=""><input type="submit" value="📤 Enviar Solicitud" /></a>
+                    <a href="./index.php"> <input type="button" value="📤 Enviar Solicitud" /></a>
                 </div>
 
             </form>
 
         </div>
     </div>
+    <!-- para el archivo doc identidad -->
     <script type="text/javascript">
     let archivo = document.querySelector('#archivo');
     archivo.addEventListener('change', () => {
         document.querySelector('#nombre-archivo').innerText = archivo.files[0].name;
     });
     </script>
+    <!-- para el archivo crtificado ONG -->
     <script type="text/javascript">
     let archivoOng = document.querySelector('#archivo-ong');
     archivoOng.addEventListener('change', () => {
         document.querySelector('#nombre-archivo-ong').innerText = archivoOng.files[0].name;
     });
     </script>
+    <!-- para la foto de usuario -->
     <script>
     function openFileSelector() {
         let inputFile = document.getElementById("avatar");
@@ -173,6 +170,7 @@ if (!isset($_SESSION['id_usuario'])) {
         );
     });
     </script>
+    <!--llamada del script movimiento-->
     <script src="./js/movimiento.js"></script>
 
 </body>

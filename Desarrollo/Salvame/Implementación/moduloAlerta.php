@@ -177,7 +177,7 @@ if (isset($_SESSION['id_usuario'])) {
                             </div>
 
                             <div class="eleccion">
-                                <a class="boton" id="priv" href="#">
+                                <a class="boton" id="priv" href="./index.php">
                                     <p>Anónima</p>
                                 </a>
                             </div>

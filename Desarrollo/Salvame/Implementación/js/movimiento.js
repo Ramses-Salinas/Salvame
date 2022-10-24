@@ -9,7 +9,7 @@ const btn_atras2 = document.querySelector(".antPag2");
 
 btn_adelante2.addEventListener("click", function(e){
     e.preventDefault();
-    movPag.style.marginTop = "-600px";
+    movPag.style.marginTop = "-604px";
     ventana.style.height = "350px";
     ventana.style.margin = "148px auto";
     part2.style.padding = "0px 0px";
