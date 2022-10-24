@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="imagenes/logo_colores.jpg" />
+    <link rel="stylesheet" href="estilos/estilos-IU-12.css" />
+    <title>Postular</title>
+  </head>
+  <body>
+    <div class="ventana">
+      
+      <div class="parte-1">
+        <h2>| Sálvame</h2>
+        <a href="">Inicio</a>
+      </div>
+      
+
+      <div class="parte-2">
+          <form action="">
+
+            <!-- DIV DE ARIANAAA-->
+
+
+            <!-- PARA DOCUMENTO DE IDENTIDAD -->
+            <div class="pagina movPag">
+              <h3>DOCUMENTO DE IDENTIDAD</h3>
+              <label id="label-nombre" for="nombre-doc">Nombre</label>
+              <input type="text" name="" id="nombre-doc" placeholder=" Documento de Identidad" readonly/>
+              <br>
+              <label for="desc-doc">Descripción</label>
+              <input type="text" name="" id="desc-doc" placeholder=" Documento Nacional de Identidad" readonly/>
+
+              <div class="clase-archivo">
+                <div class="clase-nombre-archivo">
+                  <p id="nombre-archivo">Seleccionar archivo...</p>
+                </div>
+                <label id="label-archivo" for="archivo">📁 Archivo</label>
+                <input type="file" id="archivo" placeholder=" Seleccionar archivo..." /> <!--ESTO SI SE WARDA A LA BD-->
+              </div>
+              
+              <br>
+              <input type="button" class="antPag1" value="Anterior" style="background-color: rgba(54,50,10,65%)"/>
+              <input type="button" class="sigPag3" value="Siguiente" />
+            </div>
+
+            <!-- PARA CERTIFICADO ONG -->
+            <div class="pagina">
+              <h3>CERTIFICADO ONG</h3>
+              <label for="nombre-doc">Nombre</label>
+              <input type="text" name="" id="nombre-doc" placeholder=" Certificado ONG" readonly/>
+              <br>
+              <label for="desc-doc">Descripción</label>
+              <input type="text" name="" id="desc-doc" placeholder=" Certificado original de evidencia" readonly/>
+              
+              <div class="clase-archivo">
+                <div class="clase-nombre-archivo">
+                  <p id="nombre-archivo-ong">Seleccionar archivo...</p>
+                </div>
+                <label id="label-archivo" for="archivo-ong">📁 Archivo</label>
+                <input type="file" id="archivo-ong" placeholder=" Seleccionar archivo..." /> <!--ESTO SI SE WARDA A LA BD-->
+              </div>
+              <br>
+              <input type="button" class="antPag2" value="Anterior" style="background-color: rgba(54,50,10,65%)"/>
+              <a href=""><input type="submit" value="📤 Enviar Solicitud" /></a>
+            </div>
+
+          </form>
+
+      </div>
+    </div>
+    <script type="text/javascript">
+      let archivo = document.querySelector('#archivo');
+      archivo.addEventListener('change',() => {
+        document.querySelector('#nombre-archivo').innerText = archivo.files[0].name;
+      });
+    </script>
+    <script type="text/javascript">
+      let archivoOng = document.querySelector('#archivo-ong');
+      archivoOng.addEventListener('change',() => {
+        document.querySelector('#nombre-archivo-ong').innerText = archivoOng.files[0].name;
+      });
+    </script>
+    
+    <script src="movimiento.js"></script>
+
+  </body>
+</html>
