@@ -39,7 +39,12 @@ header {
   font-family: "Poppins", sans-serif;
 }
 
+.slider{
+  padding: 10vh 0 10vh 0;
+}
+
 section{
+
     padding-top: 2%;
     display: flex;
     justify-content: center;
@@ -48,21 +53,108 @@ section{
     font-family: "Poppins", sans-serif;
     color:#593920;
 }
+section .boton{
+  font-size: 5vh;
+  padding: 2vh 5vh 2vh 5vh;
+}
 
+section .boton:hover{
+  background: #689568;
+  color: white;
+  cursor: pointer;
+}
 section h1 {
   font-weight: 500;
   font-size: 3.8vw;
   color: #593920;
+  padding: 6vh
 }
 
 section p{
-    font-size: 1.5vw;
+  width: 73vw;
+  font-size: 2vw;
+  background-color: #ffffb5;
+  text-align: center;
+  padding: 5vh;
+  border-radius: 20px;
 }
+
+/* slider*/
+.cuadro{
+  height: 13.5vw;
+}
+
+.cuadro img{
+  height: 100%;
+  object-fit: fill;
+  border-radius: 15px;
+}
+
+.slick-dots {
+  text-align: center;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+.slick-dots li {
+  display: inline-block;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+.slick-dots li.slick-active button {
+  background-color: black;
+}
+.slick-dots li button {
+  font: 0/0 a;
+  text-shadow: none;
+  color: transparent;
+  background-color: #999;
+  border: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+}
+.slick-dots li :hover {
+  background-color: black;
+}
+
+
+
+/* Custom Arrow */
+.anterior {
+  color: #999;
+  position: absolute;
+  top: 38%;
+  left: -2em;
+  font-size: 1.5em;
+}
+.anterior :hover {
+  cursor: pointer;
+  color: black;
+}
+
+.siguiente {
+  color: #999;
+  position: absolute;
+  top: 38%;
+  right: -2em;
+  font-size: 1.5em;
+}
+.siguiente :hover {
+  cursor: pointer;
+  color: black;
+}
+
+@media screen and (max-width: 800px) {
+  .siguiente {
+    display: none !important;
+  }
+}
+
 
 /* Footer */
 footer {
     background-color: #ffffb5;
-    margin-top: auto;
+    margin-top: 5vh;
   }
   .footer {
     padding: 30px 0;
