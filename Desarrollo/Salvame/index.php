@@ -25,7 +25,7 @@
             <h1 class="titulo-1">Sálvame</h1>
             <p class="parrafo-1">
                 Es una plataforma de concientización sobre el tráfico ilegal de fauna
-                silvestre en todo el perú
+                silvestre en todo el Perú
             </p>
         </div>
         <div>
