@@ -1,115 +1,109 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="imagenes/logo_colores.jpg" />
-    <link rel="stylesheet" href="estilos/estiloIU11.css" />
+    <link rel="stylesheet" href="estilos/estiloIU-11.css" />
     <title>Iniciar Sesión</title>
-  </head>
-  <body>
+</head>
+
+<body>
     <div class="ventana">
-      <div class="parte-1">
-        <h2>| Sálvame</h2>
-        <a href="#">Inicio</a>
-      <div class="foto-perfil">
-    <img
-    id="view-new-upload-image"
-    width="100px"
-    height="100px"
-    src="./imagenes/person-add_icon-icons.com_50077.png"
-    />
-      </div>
-      
-        
-      </div>
-      <div class="parte-2">
-        <h3>REGíSTRATE</h3>
-        <form action="">
-          
-         <input type="text" name="" id="user" placeholder="🙍 Nombre" />
-          <input type="text" name="" id="user" placeholder="🙍 Apellido" />
-          <select name="" id="">
+        <div class="parte-1">
+            <h2>| Sálvame</h2>
+            <a href="#">Inicio</a>
+            <div class="foto-perfil">
+                <img id="view-new-upload-image" width="100px" height="100px" src="./imagenes/person-add_icon-icons.com_50077.png" />
+            </div>
+
+
+        </div>
+        <div class="parte-2">
+            <h3>REGíSTRATE</h3>
+            <form action="">
+
+                <input type="text" name="" id="user" placeholder="🙍 Nombre" />
+                <input type="text" name="" id="user" placeholder="🙍 Apellido" />
+                <select name="" id="">
             <option value=""> 📄 Tipo de documento</option>
             <option value="DNI">DNI</option>
             <option value="Carnet">Carnet de extranjería</option>
           </select>
-          <input type="text" name="" id=user" placeholder="#️⃣ Número de documento" />
-          <input type="text" name="" id=user" placeholder="📍 Distrito" />
-          <input type="text" name="" id=user" placeholder="🏠 Dirección" />
+                <input type="text" name="" id=user " placeholder="#️⃣ Número de documento " />
+          <input type="text " name=" " id=user" placeholder="📍 Distrito" />
+                <input type="text" name="" id=user " placeholder="🏠 Dirección " />
           <input
-            type="text"
-            name=""
-            id="user"
-            placeholder="✉️ Correo electrónico"
+            type="text "
+            name=" "
+            id="user "
+            placeholder="✉️ Correo electrónico "
           />
-          <input type="text" name="" id=user" placeholder="📞 Teléfono/Celular" />
-          <select name="" id="">
+          <input type="text " name=" " id=user" placeholder="📞 Teléfono/Celular" />
+                <select name="" id="">
             <option value=""> ⚥ Sexo</option>
             <option value="Femenino">Femenino</option>
             <option value="Masculino">Masculino</option>
           </select>
-          
-          <input type="date" id="start" name="trip-start"
-          min="1900-01-01" max="2004-12-31">
-          <input type="file" class="btn-img" name="avatar" id="avatar" />
-          <br />
-          <input
-            type="submit"
-            value="Siguiente
-"
-          />
-        
-        </form>
-      </div>
+
+                <input type="date" id="start" name="trip-start" min="1900-01-01" max="2004-12-31">
+                <input type="file" class="btn-img" name="avatar" id="avatar" />
+                <br />
+                <input type="submit" value="Siguiente
+" />
+
+            </form>
+        </div>
     </div>
     <script>
+        function openFileSelector() {
+            let inputFile = document.getElementById("avatar");
 
-      function openFileSelector() {
-        let inputFile = document.getElementById("avatar");
-    
-        if (inputFile) {
-          inputFile.click();
+            if (inputFile) {
+                inputFile.click();
+            }
         }
-      }
-    
-      function changeImagePreview() {
-        let inputFile = document.getElementById("avatar");
-        let showImage = document.getElementById("view-new-upload-image");
-    
-        if (inputFile) {
-          let reader = new FileReader();
-    
-          reader.onload = function () {
-            showImage.src = reader.result;
-          };
-    
-          if (inputFile && inputFile.files && inputFile.files.length) {
-            reader.readAsDataURL(inputFile.files[0]);
-          }
+
+        function changeImagePreview() {
+            let inputFile = document.getElementById("avatar");
+            let showImage = document.getElementById("view-new-upload-image");
+
+            if (inputFile) {
+                let reader = new FileReader();
+
+                reader.onload = function() {
+                    showImage.src = reader.result;
+                };
+
+                if (inputFile && inputFile.files && inputFile.files.length) {
+                    reader.readAsDataURL(inputFile.files[0]);
+                }
+            }
         }
-      }
-      function assignImageChangeInput(idImg, idInput, idBtn = null) {
-        let inputFile = document.getElementById(idInput);
-        let showImage = document.getElementById(idImg);
-    
-        inputFile.addEventListener("change", changeImagePreview);
-        showImage.addEventListener("click", openFileSelector);
-    
-        if (idBtn) {
-          let btn = document.getElementById(idBtn);
-          btn.addEventListener("click", openFileSelector);
+
+        function assignImageChangeInput(idImg, idInput, idBtn = null) {
+            let inputFile = document.getElementById(idInput);
+            let showImage = document.getElementById(idImg);
+
+            inputFile.addEventListener("change", changeImagePreview);
+            showImage.addEventListener("click", openFileSelector);
+
+            if (idBtn) {
+                let btn = document.getElementById(idBtn);
+                btn.addEventListener("click", openFileSelector);
+            }
         }
-      }
-    
-      window.document.addEventListener("DOMContentLoaded", () => {
-        assignImageChangeInput(
-          "view-new-upload-image",
-          "avatar",
-          "btn-open-file-selector"
-        );
-      });
+
+        window.document.addEventListener("DOMContentLoaded", () => {
+            assignImageChangeInput(
+                "view-new-upload-image",
+                "avatar",
+                "btn-open-file-selector"
+            );
+        });
     </script>
-  </body>
+</body>
+
 </html>
