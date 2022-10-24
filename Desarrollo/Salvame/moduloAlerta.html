@@ -32,20 +32,20 @@
             </div>
 
             <!-- Pasos -->
+            <!-- Paso 1  -->
             <div class="paso-formulario paso-formulario-activo">
                 <div class="contenedor">
-                    <div class="borde"> 
+                    <div class="borde">
                         <div class="nube-contenedor">
                             <img src="imagenes/nube.png" alt="">
                         </div>
-                        <div class="texto">Suelte el archivo aquí 
-                            o</div>
+                        <div class="texto">Suelte el archivo aquí o
+                        </div>
                         <div class="boton-archivo">
                             <label for="Capturar">
                                 Capturar
                                 <input type="file" id="Capturar"/>
                             </label>
-                            
                         </div>
                     </div>
                     <img src="imagenes/fondo.png" alt="">
@@ -54,22 +54,103 @@
                     <a href="#" class="boton boton-siguiente">Siguiente</a>
                 </div>
             </div>
+            <!-- Paso 2  -->
             <div class="paso-formulario">
+                <div class="contenedor" id="contenedor2">
+                    <form>
+                        <section class="categoria">
+                            <h3>Selecciona una categoria</h3>
+                            <select class="categoria" id="categoria">
+                                <option>Opción 1</option>
+                                <option>Opción 2</option>
+                                <option>Opción 3</option>
+                                <option>Opción 4</option>
+                                <option>Opción 5</option>
+                                <option>Opción 6</option>
+                                <option>Opción 7</option>
+                            </select>
+                        </section>
+                        <div class="solucion">
+                            <section class="descripciones">
+                                <div class="tituDescripcion izq">
+                                    <p>Describir el animal afectado <img id="imagen1" src="imagenes/escribir.png" alt=""></p>
+                                </div>
+                                <div class="tituDescripcion der">
+                                    <p>Describir los hechos <img id="imagen2" src="imagenes/escribir.png" alt=""></p>
+                                </div>
+                                <div class="campoDes">
+                                    <textarea rows="15" maxlength="500" cols="40"></textarea>
+                                </div>
+                                <div class="campoDes">
+                                    <textarea rows="15" cols="40" maxlength="500"></textarea>
+                                </div>
+                                <img class="fondoDiv" src="imagenes/fondo.png" alt="">
+                            </section>
+                        </div>
+                    </form>
+                </div>
                 <div class="botones">
                     <a href="#" class="boton boton-anterior">Anterior</a>
                     <a href="#" class="boton boton-siguiente">Siguiente</a>
                 </div>
             </div>
+            <!-- Paso 3  -->
             <div class="paso-formulario">
+                <div class="contenedor" id="contenedor3">
+                    <section class="seccion3" id="mapa">
+
+                    </section>
+                    <section class="seccion3" id="opcionesMapa">
+                        <article class="opcionesMap">
+                            <p>Ubicación </p>
+                            <p style="color:#FCFCFC"><b>Resultado ubicación</b></p>
+                        </article>
+                        <article class="opcionesMap">
+                            <a href="#" id="capturarUbicacion">
+                                <div id="dibujo">
+                                    <div class="dibujo" id="arriba"> </div>
+                                    <div class="dibujo" id="centro"></div>
+                                    <div class="dibujo" id="abajo"></div>
+                                </div>
+                            </a>
+                            <p style="color:#FCFCFC"><b>CAPTURAR</b></p>
+                        </article>
+                        <article class="opcionesMap"></article>
+                    </section>
+                </div>
                 <div class="botones">
                     <a href="#" class="boton boton-anterior">Anterior</a>
                     <a href="#" class="boton boton-siguiente">Siguiente</a>
                 </div>
             </div>
+            <!-- Paso 4  -->
             <div class="paso-formulario">
+                <div class="contenedor" id="contenedor4">
+                    <div class="solucion">
+                        <section class="descripciones">
+                            <div id="enunciado">
+                                <p>Le gustaria que su alerta sea:</p>
+                            </div>
+
+                            <div class="eleccion">
+                                <a href="#">
+                                    <p>Anónima</p>
+                                </a>
+                            </div>
+
+                            <div class="eleccion">
+                                <a href="#">
+                                    <p>Pública</p>
+                                </a>
+                            </div>
+                            </a>
+                            <img class="fondoDiv" id="fin" src="imagenes/fondo.png" alt="">
+                        </section>
+                    </div>
+                </div>
                 <div class="botones">
                     <a href="#" class="boton boton-anterior">Anterior</a>
-                    <a href="#" class="boton boton-siguiente">Siguiente</a>
+                    <a href="#" class="boton boton-finalizar">Finalizar</a>
                 </div>
             </div>
         </form>
