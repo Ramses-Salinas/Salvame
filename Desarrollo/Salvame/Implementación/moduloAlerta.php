@@ -1,8 +1,50 @@
 <?php
 session_start();
 require './conexion_bd.php';
+$conexion = mysqli_connect("localhost", "root", "50bb11b76", "salvame");
+
+//si la sesion esta iniciada
 if (isset($_SESSION['id_usuario'])) {
-    //echo $_SESSION['id_usuario'];
+    //alerta anonima con usuario
+    if (!empty($_POST['Enviar'])) {
+        $descHechos = $_POST['dec_hechos'];
+        $decAnimal = $_POST['dec_animal'];
+        $categoria = $_POST['categoria'];
+
+        $idmarcador = ultimomarcador();
+
+        $imgData = addslashes(file_get_contents($_FILES['Evidencia']['tmp_name']));
+        $images = "INSERT INTO alerta (id_usuario,id_marcador,imagen_prueba,fecha, descri_animal, descri_hechos, categoria_animal) VALUE ('{$_SESSION['id_usuario']}','{$idmarcador}','{$imgData}',CURDATE(),'{$decAnimal}','{$descHechos}', '{$categoria}')";
+        $result = mysqli_query($conexion, $images);
+    }
+    //alerta anonima sin usuario
+} else {
+    if (!empty($_POST['Enviar'])) {
+        $descHechos = $_POST['dec_hechos'];
+        $decAnimal = $_POST['dec_animal'];
+        $categoria = $_POST['categoria'];
+
+        $idmarcador = ultimomarcador();
+
+        $imgData = addslashes(file_get_contents($_FILES['Evidencia']['tmp_name']));
+        $images = "INSERT INTO alerta (id_marcador,imagen_prueba,fecha, descri_animal, descri_hechos, categoria_animal) VALUE ('{$idmarcador}','{$imgData}',CURDATE(),'{$decAnimal}','{$descHechos}', '{$categoria}')";
+        $result = mysqli_query($conexion, $images);
+    }
+}
+if (isset($_SESSION['id_usuario'])) {
+    //Alerta publica con usuario
+    if (!empty($_POST['Enviar2'])) {
+        $descHechos = $_POST['dec_hechos'];
+        $decAnimal = $_POST['dec_animal'];
+        $categoria = $_POST['categoria'];
+
+        $idmarcador = ultimomarcador();
+
+        $imgData = addslashes(file_get_contents($_FILES['Evidencia']['tmp_name']));
+        $images = "INSERT INTO alerta (id_usuario,id_marcador,imagen_prueba,fecha, descri_animal, descri_hechos, categoria_animal) VALUE ('{$_SESSION['id_usuario']}','{$idmarcador}','{$imgData}',CURDATE(),'{$decAnimal}','{$descHechos}', '{$categoria}')";
+        $result = mysqli_query($conexion, $images);
+        header('Location: ./IU-10.php');
+    }
     $records = $conn->prepare('SELECT id_usuario, correo, contrasenia FROM usuario WHERE id_usuario = :id_usuario');
     $records->bindParam(':id_usuario', $_SESSION['id_usuario']);
     $records->execute();
@@ -12,9 +54,48 @@ if (isset($_SESSION['id_usuario'])) {
     if (count($results) > 0) {
         $user = $results;
     }
+} else {
+    if (!empty($_POST['Enviar2'])) {
+        $descHechos = $_POST['dec_hechos'];
+        $decAnimal = $_POST['dec_animal'];
+        $categoria = $_POST['categoria'];
+
+        $idmarcador = ultimomarcador();
+
+        $imgData = addslashes(file_get_contents($_FILES['Evidencia']['tmp_name']));
+        $images = "INSERT INTO alerta (id_marcador,imagen_prueba,fecha, descri_animal, descri_hechos, categoria_animal) VALUE ('{$idmarcador}','{$imgData}',CURDATE(),'{$decAnimal}','{$descHechos}', '{$categoria}')";
+        $result = mysqli_query($conexion, $images);
+        header('Location: ./IU-10.php');
+    }
 }
-if (!empty($_POST["Anonima"])) {
-    echo '<script>console.log("boton anonimo")</script>';
+
+
+
+
+
+
+function ultimomarcador()
+{
+    $conexion = mysqli_connect("localhost", "root", "50bb11b76", "salvame");
+    $sql = "INSERT INTO marcador(latitud,longitud) values('0','0')";
+    $result1 = mysqli_query($conexion, $sql);
+    $last_id = $conexion->insert_id;
+    $sql2 = "DELETE FROM marcador WHERE id_marcador='{$last_id}'";
+    $result2 = mysqli_query($conexion, $sql2);
+    $last_id = $last_id - 1;
+    return $last_id;
+}
+
+if (isset($_SESSION['id_usuario'])) {
+    $records = $conn->prepare('SELECT id_usuario, correo, contrasenia FROM usuario WHERE id_usuario = :id_usuario');
+    $records->bindParam(':id_usuario', $_SESSION['id_usuario']);
+    $records->execute();
+    $results = $records->fetch(PDO::FETCH_ASSOC);
+    $user = null;
+    /*comprobando que no esta vacio*/
+    if (count($results) > 0) {
+        $user = $results;
+    }
 }
 // }
 ?>
@@ -37,14 +118,7 @@ if (!empty($_POST["Anonima"])) {
     <header>
         <div class="nav-logo">
             <a class="boton-logo" href="./index.php"><img src="./imagenes/logo_colores.png" alt="" /></a>
-            <!-- <button>
-                <img src="imagenes/logo_colores.png" alt="" href="./index.php" />
-            </button> -->
         </div>
-        <!-- <nav>
-            <a class="boton" href="./registrarse.php">Registrarme</a>
-            <a class="boton" href="./iniciarsesion.php">Iniciar Sesión</a>
-        </nav> -->
         <div class="menu-cambia">
             <ul class="menu">
                 <?php if (!empty($user)) : ?>
@@ -62,7 +136,7 @@ if (!empty($_POST["Anonima"])) {
     </header>
     <section>
         <h1>Módulo de Alerta</h1>
-        <form action="./generaralertas.php" class="form" method="post" enctype="multipart/form-data">
+        <form action="" class="form" method="post" enctype="multipart/form-data">
             <!-- Barra de Progreso -->
             <div class="barraDeProgreso">
                 <div class="progreso" id="progreso"></div>
@@ -85,7 +159,9 @@ if (!empty($_POST["Anonima"])) {
                         <div class="boton-archivo">
                             <label for="Capturar">
                                 Capturar
+                                <!-- <form form action="" method="post" enctype="multipart/form-data"> -->
                                 <input type="file" id="Capturar" name="Evidencia" />
+                                <!-- <input type="submit" name="Enviar"> -->
                             </label>
                         </div>
                     </div>
@@ -98,38 +174,39 @@ if (!empty($_POST["Anonima"])) {
             <!-- Paso 2  -->
             <div class="paso-formulario">
                 <div class="contenedor" id="contenedor2">
-                    <form>
-                        <section class="categoria">
-                            <h3>Selecciona una categoria</h3>
-                            <select class="categoria" id="categoria" name="categoria">
-                                <option>Opción 1</option>
-                                <option>Opción 2</option>
-                                <option>Opción 3</option>
-                                <option>Opción 4</option>
-                                <option>Opción 5</option>
-                                <option>Opción 6</option>
-                                <option>Opción 7</option>
-                            </select>
+                    <section class="categoria">
+                        <h3>Selecciona una categoria</h3>
+                        <select class="categoria" id="categoria" name="categoria">
+                            <option>Opción 1</option>
+                            <option>Opción 2</option>
+                            <option>Opción 3</option>
+                            <option>Opción 4</option>
+                            <option>Opción 5</option>
+                            <option>Opción 6</option>
+                            <option>Opción 7</option>
+                        </select>
+                    </section>
+                    <div class="solucion">
+                        <section class="descripciones">
+                            <div class="tituDescripcion izq">
+                                <p>Describir el animal afectado <img id="imagen1" src="imagenes/escribir.png" alt="">
+                                </p>
+                            </div>
+                            <div class="tituDescripcion der">
+                                <p>Describir los hechos <img id="imagen2" src="imagenes/escribir.png" alt=""></p>
+                            </div>
+
+                            <div class="campoDes">
+                                <!-- <input type="text" name="dec_hechos"> -->
+                                <textarea rows="15" maxlength="500" cols="40" name="dec_hechos"></textarea>
+                            </div>
+                            <div class="campoDes">
+                                <textarea rows="15" cols="40" maxlength="500" name="dec_animal"></textarea>
+                            </div>
+
+                            <img class="fondoDiv" src="imagenes/fondo.png" alt="">
                         </section>
-                        <div class="solucion">
-                            <section class="descripciones">
-                                <div class="tituDescripcion izq">
-                                    <p>Describir el animal afectado <img id="imagen1" src="imagenes/escribir.png"
-                                            alt=""></p>
-                                </div>
-                                <div class="tituDescripcion der">
-                                    <p>Describir los hechos <img id="imagen2" src="imagenes/escribir.png" alt=""></p>
-                                </div>
-                                <div class="campoDes">
-                                    <textarea rows="15" maxlength="500" cols="40" name="dec_hechos"></textarea>
-                                </div>
-                                <div class="campoDes">
-                                    <textarea rows="15" cols="40" maxlength="500" name="dec_animal"></textarea>
-                                </div>
-                                <img class="fondoDiv" src="imagenes/fondo.png" alt="">
-                            </section>
-                        </div>
-                    </form>
+                    </div>
                 </div>
                 <div class="botones">
                     <a href="#" class="boton boton-anterior">Anterior</a>
@@ -148,6 +225,7 @@ if (!empty($_POST["Anonima"])) {
                         let geoLoc;
                         let latitud;
                         let longitud;
+                        let geocoder;
 
                         //const botonAnterior = document.querySelectorAll(".boton-capturar");
                         function initMap() {
@@ -165,6 +243,7 @@ if (!empty($_POST["Anonima"])) {
                                 draggable: true,
                                 title: "Marcador prueba"
                             });
+                            geocoder = new google.maps.Geocoder();
                             getPosition();
                             // javascript_to_php();
                         }
@@ -223,6 +302,7 @@ if (!empty($_POST["Anonima"])) {
                         window.initMap = initMap;
                         document.addEventListener("DOMContentLoaded", function() {
                             function capturarUbicación() {
+                                latLng = marker.getPosition;
                                 latitud = marker.getPosition().lat();
                                 longitud = marker.getPosition().lng();
                                 var cadena = `Latitud: ${latitud}<br>Longitud: ${longitud}`;
@@ -250,11 +330,6 @@ if (!empty($_POST["Anonima"])) {
                         </article>
                         <article class="opcionesMap">
                             <a href="#" id="capturarUbicacion">
-                                <form action="generaralertas.php" method="POST">
-                                    <input type="text" name="latitud" id="latitud" value="">
-                                    <input type="text" name="longitud" id="longitud" value="">
-
-                                </form>
                                 <div id="dibujo">
                                     <div class="dibujo" id="arriba"> </div>
                                     <div class="dibujo" id="centro"></div>
@@ -268,10 +343,7 @@ if (!empty($_POST["Anonima"])) {
                 </div>
                 <div class="botones">
                     <a href="#" class="boton boton-anterior">Anterior</a>
-                    <a href="#" class="boton boton-siguiente">Siguiente
-                        <!-- <input name="btncoord" class="btn" type="submit"
-                            value="Siguiente" formaction="moduloAlerta.php"> -->
-                    </a>
+                    <a href="#" class="boton boton-siguiente">Siguiente </a>
 
                 </div>
             </div>
@@ -285,14 +357,14 @@ if (!empty($_POST["Anonima"])) {
                             </div>
 
                             <div class="eleccion">
-                                <p><input type="submit" value="Anonima" name="Anonima" id="Anonima"> Anonima</p>
-                                <?php
-                                echo '<script>alert:("entro a guardar alerta");s</script>' ?>
+                                <a class="btn" id="priv">
+                                    <input type="submit" value="Anonima" name="Enviar" id="submitpriv">
+                                </a>
                             </div>
 
                             <div class="eleccion">
-                                <a class="btn" id="priv" href="./IU-10.php">
-                                    <p><input type="submit" value="Publica">Pública</p>
+                                <a class="btn" id="priv">
+                                    <input type="submit" value="Publica" name="Enviar2" id="submitpriv">
                                 </a>
                             </div>
                             </a>
@@ -302,7 +374,8 @@ if (!empty($_POST["Anonima"])) {
                 </div>
                 <div class="botones">
                     <a href="#" class="boton boton-anterior">Anterior</a>
-                    <a href="./index.php" class="boton boton-finalizar">Finalizar</a>
+                    <a class="boton boton-siguiente">
+                        <input type="submit" value="Finalizar" id="finalizar" name="Enviar"></a>
                 </div>
             </div>
         </form>

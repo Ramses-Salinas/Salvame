@@ -1,3 +1,37 @@
+<?php
+function ultimaALERTA()
+{
+    $conexion = mysqli_connect("localhost", "root", "50bb11b76", "salvame");
+    $sql = "INSERT INTO alerta(id_marcador) VALUE ('1')";
+    $result1 = mysqli_query($conexion, $sql);
+    $last_id = $conexion->insert_id;
+    $sql2 = "DELETE FROM alerta WHERE id_alerta='{$last_id}'";
+    $result2 = mysqli_query($conexion, $sql2);
+    $last_id = $last_id - 1;
+    return $last_id;
+}
+if (!empty($_POST['añadir'])) {
+    $conexion = mysqli_connect("localhost", "root", "50bb11b76", "salvame");
+    $idalerta = ultimaALERTA();
+    $nombre = $_POST['Nombres'] . " " . $_POST['Apellidos'];
+    $dni = $_POST['dni'];
+    $correo = $_POST['correo'];
+    // if (isset($_POST['notificaciones']) && $_POST['notificaciones'] == "1") {
+    //     $notificaciones = '1';
+    // } else {
+    //     $notificaciones = '0';
+    // }
+    $sql2 = "UPDATE alerta set nombre='{$nombre}', dni='{$dni}',correo='{$correo}' where id_alerta='{$idalerta}'";
+    $result2 = mysqli_query($conexion, $sql2);
+}
+
+
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -20,29 +54,29 @@
         </div>
         <div class="parte-2">
             <h3>DATOS PERSONALES</h3>
-            <form action="">
-                <input type="text" name="" id="user" placeholder="✉️ Correo electrónico" />
+            <form action="" method="post">
+                <input type="text" name="correo" id="user" placeholder="✉️ Correo electrónico" />
                 <select name="" id="">
                     <option value=""> 📄Tipo de documento</option>
                     <option value="DNI">DNI</option>
                     <option value="Carnet">Carnet de extranjería</option>
                 </select>
-                <input type="text" name="" id="dni" placeholder="📄 Número de documento" />
+                <input type="text" name="dni" id="dni" placeholder="📄 Número de documento" />
                 <button type="button" id="buscar" class="btn btn-dark">Buscar</button>
-                <input type="text" name="" id="Nombres" />
-                <input type="text" name="" id="Apellidos" />
+                <input type="text" name="Nombres" id="Nombres" />
+                <input type="text" name="Apellidos" id="Apellidos" />
                 <br />
                 <input id="checkbox-1" type="checkbox" />
                 <label for="checkbox-1">He leído y acepto los términos y condiciones de “Sálvame”</label>
                 <br />
-                <input id="checkbox-2" type="checkbox" />
+                <input id="checkbox-2" type="checkbox" name="notificaciones" />
                 <label for="checkbox-2">Quiero recibir notificaciones de las alertas e información
                     relevante de la página</label>
                 <br />
                 <br />
-                <a class="añadir" href="./index.php">Añadir
-                    <!-- <input type="submit" value="Añadir" href="./index.php" />-->
-                </a>
+                <input type="submit" name="añadir">Añadir
+                <!-- <input type="submit" value="Añadir" href="./index.php" />-->
+                </input>
             </form>
         </div>
     </div>
