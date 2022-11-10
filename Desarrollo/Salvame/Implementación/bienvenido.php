@@ -24,10 +24,7 @@ if (isset($_SESSION['id_usuario'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-    <link rel='stylesheet' href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'>
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.5/slick.min.css'>
-    <link rel="stylesheet" href="estilos/estiloIU-03.css">
+    <link rel="stylesheet" href="estilos/estiloIU-03.css" />
     <title>Bienvenido</title>
 </head>
 
@@ -50,9 +47,6 @@ if (isset($_SESSION['id_usuario'])) {
                 <?php endif; ?>
             </ul>
         </div>
-        <nav>
-            <a class="boton" href="#">Iniciar Sesión</a>
-        </nav>
     </header>
 
     <section>
@@ -61,54 +55,13 @@ if (isset($_SESSION['id_usuario'])) {
             ilegal de animales silvestres en el Perú, con su ayuda podremos
             disminuir estos actos ilícitos, impulsar y concientizar a los
             demás pero sobre todo darles la libertad que merecen estos animales </p>
-        <div class="container">
-                <div class="col-md-12 heroSlider-fixed">
-                    <div class="overlay">
-                    </div>
-                    <div class="slider responsive">
-                        <div>
-                            <div class="cuadro">
-                                <img src="/imagenes/GalleriaLoro.jpg" alt="">
-                            </div>
-                        </div>
-                        <div>
-                            <div class="cuadro">
-                                <img src="/imagenes/GalleriaZorro.jpg" alt="">
-                            </div>
-                        </div>
-                        <div>
-                            <div class="cuadro">
-                                <img src="/imagenes/standard_SERFOR_tráfico de monos_MG_0536.jpg.jpg" alt="">
-                            </div>
-                        </div>
-                        <div>
-                            <div class="cuadro">
-                                <img src="/imagenes/GalleriaLoro.jpg" alt="">
-                            </div>
-                        </div>
-                        <div>
-                            <div class="cuadro">
-                                <img src="/imagenes/GalleriaZorro.jpg" alt="">
-                            </div>
-                        </div>
-                        <div>
-                            <div class="cuadro">
-                                <img src="/imagenes/standard_SERFOR_tráfico de monos_MG_0536.jpg.jpg" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="anterior">
-                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                    </div>
-                    <div class="siguiente">
-                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                    </div>
-                </div>
-            
+        <div class="galeria">
+
         </div>
-
-
-        <div class="boton">Vamos</div>
+        <div class="boton">
+            <a class="boton" href="./moduloAlerta.php">Vamos
+            </a>
+        </div>
     </section>
 
     <footer>
@@ -153,10 +106,6 @@ if (isset($_SESSION['id_usuario'])) {
         </div>
         <p>© 2022 Sálvame. ALL RIGHT RESERVED.</p>
     </footer>
-
-    <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.5/slick.min.js'></script>
-    <script src="/IU-03.js"></script>
 </body>
 
 </html>
