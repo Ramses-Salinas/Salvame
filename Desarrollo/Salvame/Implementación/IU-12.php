@@ -1,11 +1,44 @@
 <?php
-
 session_start();
-/* Si la $_SESSION tiene un id dentro
-entonces nos dirige al index*/
-if (!isset($_SESSION['id_usuario'])) {
-}
 
+
+require 'conexion_bd.php';
+$message = '';
+$fecha = '2000-12-15';
+if (!empty($_POST["enviarSolicitud"])) {
+    echo 'entro 1';
+    if (empty($_POST["nombre"])             and empty($_POST["apellido"]) 
+        and empty($_post["numDocumento"])   and empty($_post["distrito"])
+        and empty($_POST["correo"])         and empty($_POST["celular"]) 
+        and empty($_POST["sexo"])           and empty($_POST["archivoDNI"]) 
+        and empty($_POST["archivoONG"]) ) {
+        echo '<div class="alert alert-danger">LOS CAMPOS ESTAN VACIOS</div>';
+    } else {
+        echo 'entro 2';
+         $sql = "INSERT INTO postulante(nombre,apellido_Pat,apellido_Mat, dni,direccion,fecha_Nac,sexo,correo,celular,archivo_dni,archivo_ong)
+        values( :nombre, :apellido_pat, :apellido_mat ,:dni , :direccion, :fecha_nac, :sexo, :correo, :celular, :archivo_dni, :archivo_ong)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':nombre', $_POST['nombre']);
+        $stmt->bindParam(':apellido_pat', $_POST['apellido']);
+        $stmt->bindParam(':apellido_mat', $_POST['apellido']);
+        $stmt->bindParam(':dni', $_POST['numDocumento']);
+        $stmt->bindParam(':direccion', $_POST['distrito']);
+        $stmt->bindParam(':fecha_nac', $fecha);
+        $stmt->bindParam(':sexo', $_POST['sexo']);
+        $stmt->bindParam(':correo', $_POST['correo']);
+        $stmt->bindParam(':celular', $_POST['celular']);
+        $stmt->bindParam(':archivo_dni', $_POST['archivoDNI']);
+        $stmt->bindParam(':archivo_ong', $_POST['archivoONG']);
+        if ($stmt->execute()) {
+            echo 'entro 3';
+            echo '<div class="alert alert-danger">REGISTRO EXITOSO</div>';
+            header('Location: ./index.php');
+        } else {
+            $message = 'Ocurrio un error en el registro del usuario';
+            echo '<div class="alert alert-danger">Fallido</div>';
+        }
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -32,24 +65,24 @@ if (!isset($_SESSION['id_usuario'])) {
         </div>
 
         <div class="parte-2">
-            <form action="">
+            <form action="IU-12.php" method="POST" class="postular-form">
                 <!-- IU-11 -->
                 <div class="pagina movPag">
                     <h3>REGíSTRATE</h3>
-                    <input type="text" name="" id="user" placeholder="🙍 Nombre" />
-                    <input type="text" name="" id="user" placeholder="🙍 Apellido" />
+                    <input type="text" name="nombre" id="user" placeholder="🙍 Nombre" />
+                    <input type="text" name="apellido" id="user" placeholder="🙍 Apellido" />
 
                     <select name="" id="">
                         <option value=""> 📄 Tipo de documento</option>
                         <option value="DNI">DNI</option>
                         <option value="Carnet">Carnet de extranjería</option>
                     </select>
-                    <input type="text" name="" id="user" placeholder="#️⃣ Número de documento" />
-                    <input type="text" name="" id="user" placeholder="📍 Distrito" />
-                    <input type="text" name="" id="user" placeholder="🏠 Dirección" />
-                    <input type="text" name="" id="user" placeholder="✉️ Correo electrónico" />
-                    <input type="text" name="" id="user" placeholder="📞 Teléfono/Celular" />
-                    <select name="" id="">
+                    <input type="text" name="numDocumento" id="user" placeholder="#️⃣ Número de documento" />
+                    <input type="text" name="distrito" id="user" placeholder="📍 Distrito" />
+                    <input type="text" name="dirección" id="user" placeholder="🏠 Dirección" />
+                    <input type="text" name="correo" id="user" placeholder="✉️ Correo electrónico" />
+                    <input type="text" name="celular" id="user" placeholder="📞 Teléfono/Celular" />
+                    <select name="sexo" id="">
                         <option value=""> ⚥ Sexo</option>
                         <option value="Femenino">Femenino</option>
                         <option value="Masculino">Masculino</option>
@@ -74,7 +107,7 @@ if (!isset($_SESSION['id_usuario'])) {
                             <p id="nombre-archivo">Seleccionar archivo...</p>
                         </div>
                         <label id="label-archivo" for="archivo">📁 Archivo</label>
-                        <input type="file" id="archivo" placeholder=" Seleccionar archivo..." />
+                        <input type="file" id="archivo" name="archivoDNI" placeholder=" Seleccionar archivo..." />
                         <!--ESTO SI SE WARDA A LA BD-->
                     </div>
 
@@ -91,7 +124,7 @@ if (!isset($_SESSION['id_usuario'])) {
                     <input type="text" name="" id="nombre-doc" placeholder=" Certificado ONG" readonly />
                     <br>
                     <label for="desc-doc">Descripción</label>
-                    <input type="text" name="" id="desc-doc" placeholder=" Certificado original de evidencia"
+                    <input type="text" id="desc-doc" placeholder=" Certificado original de evidencia"
                         readonly />
 
                     <div class="clase-archivo">
@@ -99,13 +132,13 @@ if (!isset($_SESSION['id_usuario'])) {
                             <p id="nombre-archivo-ong">Seleccionar archivo...</p>
                         </div>
                         <label id="label-archivo" for="archivo-ong">📁 Archivo</label>
-                        <input type="file" id="archivo-ong" placeholder=" Seleccionar archivo..." />
+                        <input type="file" name="archivoONG" id="archivo-ong" placeholder=" Seleccionar archivo..." />
                         <!--ESTO SI SE WARDA A LA BD-->
                     </div>
                     <br>
                     <input type="button" class="antPag2" value="Anterior"
                         style="background-color: rgba(54,50,10,65%)" />
-                    <a href="./index.php"> <input type="button" value="📤 Enviar Solicitud" /></a>
+                    <a href="#"> <input name="enviarSolicitud" type="submit" value="📤 Enviar Solicitud" /></a>
                 </div>
 
             </form>
