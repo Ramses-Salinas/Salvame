@@ -1,0 +1,218 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Forum&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Megrim&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+}
+/* Estilo de cabecera */
+header {
+  display: flex;
+  height: 60px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #593920;
+}
+.nav-logo {
+  display: flex;
+}
+.nav-logo img {
+  height: 60px;
+}
+
+.boton {
+  padding: 10px;
+  margin: 10px;
+  background: #7cc67b;
+  border-radius: 8px;
+  text-decoration: none;
+  color: white;
+  font-family: "Poppins", sans-serif;
+}
+
+.main-title {
+  padding: 50px;
+  text-align: center;
+  font-size: 5rem;
+  color: #593920;
+  font-family: "Megrim", cursive;
+}
+.boton-buscar {
+  border: none;
+  cursor: pointer;
+  background: rgb(196, 196, 196);
+}
+.boton-buscar:hover {
+  background: rgb(107, 106, 106);
+}
+.main-section-uno {
+  width: 600px;
+  margin: 0 auto;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  justify-content: space-around;
+}
+
+/*Browser*/
+.main-browser {
+  background: #f2f2f2;
+  width: 300px;
+  height: 45px;
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+}
+.icon-search {
+  background-image: url(../imagenes/search-interface-symbol.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 15px;
+  height: 15px;
+  margin-right: 15px;
+}
+
+.main-browser__input {
+  border: none;
+  outline: none;
+  background: #f2f2f2;
+  font-size: 1rem;
+  font-family: "Poppins", sans-serif;
+}
+.main-section-dos {
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  padding: 110px;
+}
+.card {
+  width: 240px;
+  height: 280px;
+  border: 1px solid #f2f2f2;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 1px 6px 0 #20212447;
+}
+
+.card img {
+  width: 100%;
+}
+.card-description {
+  width: 90%;
+  height: 50%;
+  background-image: url(../imagenes/fondo1.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  padding: 10px;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.8rem;
+}
+.card__title {
+  font-size: 1.6rem;
+}
+.card__datos {
+  color: #6d6d6d;
+  display: flex;
+  justify-content: space-between;
+}
+/*select */
+.select select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  outline: 0;
+  box-shadow: none;
+  border: 0;
+  background: #f2f2f2;
+  background-image: none;
+  flex: 1;
+  padding: 0 0.5rem;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  font-size: 1rem;
+  font-family: "Poppins", sans-serif;
+}
+.select select::-ms-expand {
+  display: none;
+}
+.select {
+  position: relative;
+  display: flex;
+  width: 300px;
+  height: 45px;
+  line-height: 3;
+  background: #f2f2f2;
+  overflow: hidden;
+  border-radius: 16px;
+}
+.select::after {
+  content: "\25BC";
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 1rem;
+  background: #f2f2f2;
+  cursor: pointer;
+  pointer-events: none;
+  transition: 0.25s all ease;
+}
+.select:hover::after {
+  color: #000000;
+}
+
+/* Footer */
+footer {
+  background-color: #ffffb5;
+}
+.footer {
+  padding: 30px 0;
+  display: flex;
+  justify-content: space-evenly;
+  border-bottom: solid 1px #593920;
+}
+.footer div {
+  font-family: "Forum", cursive;
+  width: 180px;
+}
+.integrantes {
+  margin: 10px 0;
+  list-style: none;
+  font-family: "Forum", cursive;
+  color: #593920;
+}
+
+.redes a img {
+  background-color: white;
+  padding: 5px;
+  margin: 5px 10px;
+  border: none;
+  border-radius: 10px;
+}
+.redes a img:hover {
+  background-color: #7bc67b;
+}
+
+.footer-datos {
+  list-style: none;
+  margin: 10px 0;
+}
+.footer-datos a {
+  color: #593920;
+  text-decoration: none;
+}
+
+footer p {
+  margin-top: 30px;
+  color: #593920;
+  text-align: center;
+}
+
+#mensaje {
+  display: none;
+}
