@@ -14,6 +14,10 @@ header {
   padding: 10px;
   border-bottom: 1px solid #593920;
 }
+.link {
+  text-decoration: none;
+  color: #000000;
+}
 .nav-logo {
   display: flex;
 }
@@ -38,13 +42,9 @@ header {
   color: #593920;
   font-family: "Megrim", cursive;
 }
-.boton-buscar {
-  border: none;
-  cursor: pointer;
-  background: rgb(196, 196, 196);
-}
-.boton-buscar:hover {
-  background: rgb(107, 106, 106);
+main {
+  max-width: 1300px;
+  margin: 0 auto;
 }
 .main-section-uno {
   width: 600px;
@@ -66,6 +66,9 @@ header {
   justify-content: center;
   align-items: center;
   margin-right: 10px;
+}
+.main-browser:hover {
+  box-shadow: 0 3px 8px 0 #00000047;
 }
 .icon-search {
   background-image: url(../imagenes/search-interface-symbol.png);
@@ -96,9 +99,11 @@ header {
   border: 1px solid #f2f2f2;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 1px 6px 0 #20212447;
+  box-shadow: 0 2px 6px 0 #cbcbcc47;
 }
-
+.card:hover {
+  box-shadow: 0 3px 8px 0 #00000047;
+}
 .card img {
   width: 100%;
 }
@@ -148,10 +153,14 @@ header {
   display: flex;
   width: 300px;
   height: 45px;
+  margin-right: 30px;
   line-height: 3;
   background: #f2f2f2;
   overflow: hidden;
   border-radius: 16px;
+}
+.select:hover {
+  box-shadow: 0 3px 8px 0 #00000047;
 }
 .select::after {
   content: "\25BC";
