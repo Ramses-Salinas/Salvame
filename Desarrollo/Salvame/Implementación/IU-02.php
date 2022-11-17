@@ -1,20 +1,3 @@
-<?php
-session_start();
-
-require './conexion_bd.php';
-
-if (isset($_SESSION['id_usuario'])) {
-    $records = $conn->prepare('SELECT id_usuario, correo, contrasenia FROM usuario WHERE id_usuario = :id_usuario');
-    $records->bindParam(':id_usuario', $_SESSION['id_usuario']);
-    $records->execute();
-    $results = $records->fetch(PDO::FETCH_ASSOC);
-    $user = null;
-    if (count($results) > 0) {
-        $user = $results;
-    }
-}
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -23,37 +6,25 @@ if (isset($_SESSION['id_usuario'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="imagenes/logo_colores.jpg" />
-    <link rel="stylesheet" href="estilos/estiloinicio.css" />
+    <link rel="stylesheet" href="estilos/estiloIU-02.css" />
     <title>Sálvame</title>
 </head>
 
 <body>
-
     <header>
         <div class="nav-logo">
             <img src="imagenes/logo_colores.png" alt="" />
         </div>
-        <div class="menu-cambia">
-            <ul class="menu">
-                <?php if (!empty($user)) : ?>
-                <nav>
-                    <a class="boton" href="./cerrarsesion.php">Cerrar Sesion</a>
-                </nav>
-                <?php else : ?>
-                <nav>
-                    <a class="boton" href="registrarse.php">Registrarme</a>
-                    <a class="boton" href="iniciarsesion.php">Iniciar Sesión</a>
-                </nav>
-                <?php endif; ?>
-            </ul>
-        </div>
+        <nav>
+            <a class="boton" href="./registrarse.php">Registrarme</a>
+            <a class="boton" href="./iniciarsesion.php">Iniciar Sesión</a>
+        </nav>
     </header>
     <div class="hoja-1">
         <div class="texto-1">
-            <h1 class="titulo-1">Sálvame</h1>
-            <p class="parrafo-1">
-                Es una plataforma de concientización sobre el tráfico ilegal de fauna
-                silvestre en todo el perú
+            <h1 class="titulo-1">Sálvame</h1><br>
+            <p class="parrafo-1">¡Hola! <br>
+                USUARIO
             </p>
         </div>
         <div>
@@ -61,22 +32,25 @@ if (isset($_SESSION['id_usuario'])) {
         </div>
     </div>
 
-    <div class="menu-opcion">
-        <div class="menu-opcion1">
-            <a class="imagen-texto" href="./bienvenido.php"><img src="./imagenes/alerta.png" alt="" /> Realizar
-                Alerta</a>
-            <a class="imagen-texto" href="alertas.php"><img src="./imagenes/verAlertas.png" alt="" /> Ver Alertas</a>
-            <a class="imagen-texto" href="#"><img src="./imagenes/noun-documents-103655.png" alt="" /> Mis
-                informes</a>
+
+    <section class="menu-opcion">
+        <div class="menu-opcion__logo-tucan">
+            <img src="imagenes\LogoTucan.png" alt="">
         </div>
 
-        <div class="menu-opcion2">
-            <a class="imagen-texto" href="./IU-12.php"><img src="./imagenes/noun-candidate-1127322.png" alt="" />
-                Postular a
-                Moderador</a>
-            <a class="imagen-texto" href="#"><img src="./imagenes/noun-subscribe-3786433.png" alt="" /> ¿Por qué
-                Suscribirme a Sálvame?</a>
+        <div class="menu-opcion__menu-opcion1">
+            <a class="imagen-texto" href="./moduloAlerta.php"><img src="./imagenes/alerta.png" alt="" /> Realizar
+                Alerta</a>
+
+            <a class="imagen-texto" href="./alertas.php"><img src="./imagenes/verAlertas.png" alt="" /> Ver Alertas</a>
         </div>
+        <div class="menu-opcion__menu-opcion2">
+            <a class="imagen-texto" href="#"><img src="./imagenes/noun-candidate-1127322.png" alt="" /> Mis Alertas</a>
+            <a class="imagen-texto" href="#"><img src="./imagenes/noun-documents-103655.png" alt="" /> Informes</a>
+        </div>
+    </section>
+
+
     </div>
     <footer>
         <div class="footer">

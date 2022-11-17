@@ -73,8 +73,7 @@ if (!empty($_POST['añadir'])) {
                 <label for="checkbox-2">Quiero recibir notificaciones de las alertas e información
                     relevante de la página</label>
                 <br />
-                <br />
-                <input type="submit" name="añadir">Añadir
+                <input type="submit" name="añadir">
                 <!-- <input type="submit" value="Añadir" href="./index.php" />-->
                 </input>
             </form>

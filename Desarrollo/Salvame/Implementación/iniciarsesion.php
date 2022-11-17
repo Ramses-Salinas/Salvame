@@ -17,8 +17,8 @@ if (!empty($_POST['correo']) && !empty($_POST['contrasenia'])) {
     $results = $records->fetch(PDO::FETCH_ASSOC);
 
     $message = ' ';
-    echo $results['contrasenia'];
-    echo $_POST['contrasenia'];
+    // echo $results['contrasenia'];
+    // echo $_POST['contrasenia'];
     if (!empty($results) && (strcmp($_POST['contrasenia'], $results['contrasenia'])) == 0) {
         $_SESSION['id_usuario'] = $results['id_usuario'];
         header("Location: ./index.php");

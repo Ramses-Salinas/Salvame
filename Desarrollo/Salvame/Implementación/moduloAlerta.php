@@ -68,12 +68,6 @@ if (isset($_SESSION['id_usuario'])) {
         header('Location: ./IU-10.php');
     }
 }
-
-
-
-
-
-
 function ultimomarcador()
 {
     $conexion = mysqli_connect("localhost", "root", "50bb11b76", "salvame");
@@ -160,7 +154,7 @@ if (isset($_SESSION['id_usuario'])) {
                             <label for="Capturar">
                                 Capturar
                                 <!-- <form form action="" method="post" enctype="multipart/form-data"> -->
-                                <input type="file" id="Capturar" name="Evidencia" />
+                                <input type="file" id="Capturar" name="Evidencia" accept="image/*" />
                                 <!-- <input type="submit" name="Enviar"> -->
                             </label>
                         </div>
@@ -177,13 +171,13 @@ if (isset($_SESSION['id_usuario'])) {
                     <section class="categoria">
                         <h3>Selecciona una categoria</h3>
                         <select class="categoria" id="categoria" name="categoria">
-                            <option>Opción 1</option>
-                            <option>Opción 2</option>
-                            <option>Opción 3</option>
-                            <option>Opción 4</option>
-                            <option>Opción 5</option>
-                            <option>Opción 6</option>
-                            <option>Opción 7</option>
+                            <option>Aves (Loro, guacamayo, otros)</option>
+                            <option>Mamiferos (Mono, puma, otros)</option>
+                            <option>Reptiles (Tortuga, lagartija, otros)</option>
+                            <option>Invertebrados (Mariposa, otros)</option>
+                            <option>Anfibios (Sapos, ranas, otros)</option>
+                            <option>Caza Furtiva (Vicuña y guanaco)</option>
+                            <option>A. Domésticos (perros, otros)</option>
                         </select>
                     </section>
                     <div class="solucion">
