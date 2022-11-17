@@ -66,12 +66,19 @@ select.addEventListener('change', function () {
     //recibe la region seleccionada
     var selectedOption = this.options[select.selectedIndex];
     //formatea la region seleccionada
-    var direccion = selectedOption.text + ', Peru';
+    if ((selectedOption.text == "Regiones") || (selectedOption.text == "Todas")) {
+        var direccion = 'Peru';
+        var zoom = 6;
+    }
+    else {
+        var direccion = selectedOption.text + 'Peru';
+        var zoom = 8;
+    }
 
     geocoder.geocode({ 'address': direccion }, function (results, status) {
         if (status == 'OK') {
             map.setCenter(results[0].geometry.location);
-            map.setZoom(8);
+            map.setZoom(zoom);
         }
         else {
             console.log('Fallo la geoocodificacion razon: ' + status);

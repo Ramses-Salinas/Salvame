@@ -112,9 +112,11 @@ if (isset($_SESSION['id_usuario'])) {
                         if ($valores["nombre_animal"] == null) {
                             $valores["nombre_animal"] = "Nombre Animal";
                         }
-                        echo "<button onclick='openForm()'><img src='data: image/jpeg; base64, " . base64_encode($valores["imagen_prueba"]) . "'> </button>
+                        //para asiganr identificador unico a cada div generado
+                        $id = $valores["id_alerta"];
+                        echo "<button onclick='openForm($id)'><img src='data: image/jpeg; base64, " . base64_encode($valores["imagen_prueba"]) . "'> </button>
                         
-        <div class='info' id='info'>
+        <div class='info' id='$id'>
         <div class='cabecera'>
             <div class='imagen'>
             <img src='data: image/jpeg; base64, " . base64_encode($valores["imagen_prueba"]) . "'></div>
@@ -123,7 +125,7 @@ if (isset($_SESSION['id_usuario'])) {
                 <label>" . $valores["nombre"] . "</label><br>
                 <label>Fecha:" . $valores["fecha"] . "</label><br>
             </div>
-            <button onclick='closeForm()'><img src='./imagenes/logo_colores.jpg'></button>
+            <button onclick='closeForm($id)'><img src='./imagenes/logo_colores.jpg'></button>
         </div>
         
         <div class='nombreAnimal'>
@@ -147,8 +149,35 @@ if (isset($_SESSION['id_usuario'])) {
                     $fecha = $_POST['fechas'];
                     foreach ($data as $valores) :
                         if ($valores["fecha"] == $fecha) {
-                            echo "<button onclick='openForm()'><img
-                src='data: image/jpeg; base64, " . base64_encode($valores["imagen_prueba"]) . "'></button>";
+                            $id = $valores["id_alerta"];
+                            echo "<button onclick='openForm($id)'><img src='data: image/jpeg; base64, " . base64_encode($valores["imagen_prueba"]) . "'> </button>
+                        
+        <div class='info' id='$id'>
+        <div class='cabecera'>
+            <div class='imagen'>
+            <img src='data: image/jpeg; base64, " . base64_encode($valores["imagen_prueba"]) . "'></div>
+            <div class='infocabecera'>
+                <label>Alerta " . $valores["id_alerta"] . "</label><br>
+                <label>" . $valores["nombre"] . "</label><br>
+                <label>Fecha:" . $valores["fecha"] . "</label><br>
+            </div>
+            <button onclick='closeForm($id)'><img src='./imagenes/logo_colores.jpg'></button>
+        </div>
+        
+        <div class='nombreAnimal'>
+            <label>" . $valores["nombre_animal"] . "</label>
+            </div>
+            <div class='descripciones'>
+                <div class='Animal'>
+                    <label>Animal afectado <img src='#'></label>
+                    <p>" . $valores["descri_animal"] . "</p>
+            </div>
+            <div class='hechos'>
+                <label>Hechos<img src='#'></label>
+                <p>" . $valores["descri_hechos"] . "</p>
+            </div>
+        </div>
+        </div>";
                         }
                     endforeach;
                 }
@@ -167,12 +196,13 @@ if (isset($_SESSION['id_usuario'])) {
         </div>
     </section>
     <script>
-    function openForm() {
-        document.getElementById("info").style.display = "block";
+    function openForm(id) {
+        console.log(id);
+        document.getElementById(id).style.display = "block";
     }
 
-    function closeForm() {
-        document.getElementById("info").style.display = "none";
+    function closeForm(id) {
+        document.getElementById(id).style.display = "none";
     }
     </script>
     <footer>
