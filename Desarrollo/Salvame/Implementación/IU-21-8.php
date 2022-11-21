@@ -3,17 +3,17 @@ session_start();
 
 require './conexion_bd.php';
 if (isset($_SESSION['id_usuario'])) {
-    $records = $conn->prepare('SELECT id_usuario, correo, contrasenia FROM usuario WHERE id_usuario = :id_usuario');
-    $records->bindParam(':id_usuario', $_SESSION['id_usuario']);
-    $records->execute();
-    $results = $records->fetch(PDO::FETCH_ASSOC);
-    $user = null;
-    if (count($results) > 0) {
-        $user = $results;
-    }
+  $records = $conn->prepare('SELECT id_usuario, correo, contrasenia FROM usuario WHERE id_usuario = :id_usuario');
+  $records->bindParam(':id_usuario', $_SESSION['id_usuario']);
+  $records->execute();
+  $results = $records->fetch(PDO::FETCH_ASSOC);
+  $user = null;
+  if (count($results) > 0) {
+    $user = $results;
+  }
 }
-?>
 
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -21,23 +21,20 @@ if (isset($_SESSION['id_usuario'])) {
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="imagenes/logo_colores.jpg" />
-    <link rel="stylesheet" href="estilos/estiloinicio.css" />
-    <title>Sálvame</title>
+    <title>FichaAnimal</title>
+    <link rel="shortcut icon" href="imagenes/logo_colores.jpg" type="image/x-icon" />
+    <link rel="stylesheet" href="estilos/estiloIU-21.css" />
 </head>
 
 <body>
-
     <header>
         <div class="nav-logo">
-            <img src="imagenes/logo_colores.png" alt="" />
+            <a class="boton-logo" href="./index.php"><img src="./imagenes/logo_colores.png" alt="" /></a>
         </div>
         <div class="menu-cambia">
             <ul class="menu">
-                <?php if (!empty($user)) :
-                    header("Location: ./IU-02.php"); ?>
+                <?php if (!empty($user)) : ?>
                 <nav>
-
                     <a class="boton" href="./cerrarsesion.php">Cerrar Sesion</a>
                 </nav>
                 <?php else : ?>
@@ -49,39 +46,44 @@ if (isset($_SESSION['id_usuario'])) {
             </ul>
         </div>
     </header>
-    <div class="hoja-1">
-        <div class="texto-1">
-            <h1 class="titulo-1">Sálvame</h1>
-            <p class="parrafo-1">
-                Es una plataforma de concientización sobre el tráfico ilegal de fauna
-                silvestre en todo el perú
-            </p>
-        </div>
-        <div>
-            <img src="./imagenes/Salvame.png" alt="" />
-        </div>
-    </div>
 
-    <div class="menu-opcion">
-        <div class="menu-opcion1">
-            <a class="imagen-texto" href="./bienvenido.php"><img src="./imagenes/alerta.png" alt="" /> Realizar
-                Alerta</a>
-            <a class="imagen-texto" href="alertas.php"><img src="./imagenes/verAlertas.png" alt="" /> Ver Alertas</a>
-            <a class="imagen-texto" href="./IU-20.php"><img src="./imagenes/noun-documents-103655.png" alt="" />
-                Informes</a>
+    <main class="main">
+        <!-- /*Portada*/ -->
+        <div class="Portada">
+            <img class="Portada__imagen" src="imagenes/Loro.jpg" alt="" />
         </div>
 
-        <div class="menu-opcion2">
-            <a class="imagen-texto" href="./IU-12.php"><img src="./imagenes/noun-candidate-1127322.png" alt="" />
-                Postular a
-                Moderador</a>
-            <a class="imagen-texto" href="#"><img src="./imagenes/noun-subscribe-3786433.png" alt="" /> ¿Por qué
-                Suscribirme a Sálvame?</a>
+        <section class="main-contenedor">
+            <div class="main-contenedor__descripcion">
+                <h2>COTTORA DE HOCKING</h2>
+                <h4>Familia: Psittacidae</h4>
+                <h4>Especie: Aratinga hockingi</h4>
+                <p class="Descripcion">
+                    Mauris dapibus dolor sed pretium hendrerit. Suspendisse non erat
+                    efficitur, scelerisque nibh ut, fringilla est. Nam dolor ligula,
+                    lacinia a ullamcorper eget, feugiat et risus. Donec massa nisi,
+                    aliquet et augue id, molestie sodales turpis. Maecenas et finibus
+                    nisl. Donec a neque dapibus, sollicitudin tortor non, mollis est.
+                </p>
+
+                <h4>Departamento: Amazonas</h4>
+
+                <h4>Provincia: Chachapoyas</h4>
+            </div>
+
+            <div class="main-contenedor__mapa">
+                <img class="main-contenedor__imagen" src="imagenes/AmazonasMapa.jpg" alt="" />
+            </div>
+        </section>
+
+        <div class="boton-Atras">
+            <a class="boton" href="./IU-20.php"> Atrás </a>
         </div>
-    </div>
+    </main>
+
     <footer>
         <div class="footer">
-            <div>
+            <div class="footer_contacto">
                 <div class="nav-logo">
                     <img src="imagenes/logo_colores.png" alt="" />
                 </div>
@@ -100,19 +102,19 @@ if (isset($_SESSION['id_usuario'])) {
                     <a href="#"><img src="imagenes/gorjeo.png" alt="" /></a>
                 </div>
             </div>
-            <div>
+            <div class="footer_info">
                 <h4>Nosotros</h4>
                 <ul class="footer-datos">
                     <li><a href="#">¿Por qué Suscribirme a Sálvame?</a></li>
                 </ul>
             </div>
-            <div>
+            <div class="footer_info">
                 <h4>Información</h4>
                 <ul class="footer-datos">
                     <li><a href="#">Ver Alertas</a></li>
                 </ul>
             </div>
-            <div>
+            <div class="footer_info">
                 <h4>Únete</h4>
                 <ul class="footer-datos">
                     <li><a href="#">Postular a Moderador</a></li>

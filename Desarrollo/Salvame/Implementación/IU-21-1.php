@@ -14,7 +14,6 @@ if (isset($_SESSION['id_usuario'])) {
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -22,9 +21,9 @@ if (isset($_SESSION['id_usuario'])) {
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="imagenes/logo_colores.jpg" />
-    <link rel="stylesheet" href="estilos/estiloIU-02.css" />
-    <title>Sálvame</title>
+    <title>FichaAnimal</title>
+    <link rel="shortcut icon" href="imagenes/logo_colores.jpg" type="image/x-icon" />
+    <link rel="stylesheet" href="estilos/estiloIU-21.css" />
 </head>
 
 <body>
@@ -32,48 +31,56 @@ if (isset($_SESSION['id_usuario'])) {
         <div class="nav-logo">
             <a class="boton-logo" href="./index.php"><img src="./imagenes/logo_colores.png" alt="" /></a>
         </div>
-        <nav>
-            <a class="boton" href="./cerrarsesion.php">Cerrar Sesión</a>
-        </nav>
+        <div class="menu-cambia">
+            <ul class="menu">
+                <?php if (!empty($user)) : ?>
+                <nav>
+                    <a class="boton" href="./cerrarsesion.php">Cerrar Sesion</a>
+                </nav>
+                <?php else : ?>
+                <nav>
+                    <a class="boton" href="registrarse.php">Registrarme</a>
+                    <a class="boton" href="iniciarsesion.php">Iniciar Sesión</a>
+                </nav>
+                <?php endif; ?>
+            </ul>
+        </div>
     </header>
-    <div class="hoja-1">
-        <div class="texto-1">
-            <h1 class="titulo-1">Sálvame</h1><br>
-            <p class="parrafo-1">¡Hola! <br>
-                <?php
-                echo $user["nombre"];
-                ?>
-            </p>
-        </div>
-        <div>
-            <img src="./imagenes/Salvame.png" alt="" />
-        </div>
-    </div>
 
-
-    <section class="menu-opcion">
-        <div class="menu-opcion__logo-tucan">
-            <img src="imagenes\LogoTucan.png" alt="">
+    <main class="main">
+        <!-- /*Portada*/ -->
+        <div class="Portada">
+            <img class="Portada__imagen" src="imagenes/RanaPortada.jpg" alt="" />
         </div>
 
-        <div class="menu-opcion__menu-opcion1">
-            <a class="imagen-texto" href="./moduloAlerta.php"><img src="./imagenes/alerta.png" alt="" /> Realizar
-                Alerta</a>
+        <section class="main-contenedor">
+            <div class="main-contenedor__descripcion">
+                <h2>RANA GIGANTE DEL LAGO TITICACA</h2>
+                <h4>Familia: Telmatobiinae</h4>
+                <h4>Especie: Anfibio</h4>
+                <p class="Descripcion">
+                    Con cuerpo grande, cabeza redondeada, ancha y aplanada. Su piel es
+                    suave y holgada en forma de saco y cuelga en pliegues desprendidos.
+                </p>
 
-            <a class="imagen-texto" href="./alertas.php"><img src="./imagenes/verAlertas.png" alt="" /> Ver Alertas</a>
+                <h4>Departamento: Puno</h4>
+
+                <h4>Provincia: Puno</h4>
+            </div>
+
+            <div class="main-contenedor__mapa">
+                <img class="main-contenedor__imagen" src="imagenes/PunoMapa.jpg" alt="" />
+            </div>
+        </section>
+
+        <div class="boton-Atras">
+            <a class="boton" href="./IU-20.php"> Atrás </a>
         </div>
-        <div class="menu-opcion__menu-opcion2">
-            <a class="imagen-texto" href="#"><img src="./imagenes/noun-candidate-1127322.png" alt="" /> Mis Alertas</a>
-            <a class="imagen-texto" href="IU-20.php"><img src="./imagenes/noun-documents-103655.png" alt="" />
-                Informes</a>
-        </div>
-    </section>
+    </main>
 
-
-    </div>
     <footer>
         <div class="footer">
-            <div>
+            <div class="footer_contacto">
                 <div class="nav-logo">
                     <img src="imagenes/logo_colores.png" alt="" />
                 </div>
@@ -92,19 +99,19 @@ if (isset($_SESSION['id_usuario'])) {
                     <a href="#"><img src="imagenes/gorjeo.png" alt="" /></a>
                 </div>
             </div>
-            <div>
+            <div class="footer_info">
                 <h4>Nosotros</h4>
                 <ul class="footer-datos">
                     <li><a href="#">¿Por qué Suscribirme a Sálvame?</a></li>
                 </ul>
             </div>
-            <div>
+            <div class="footer_info">
                 <h4>Información</h4>
                 <ul class="footer-datos">
                     <li><a href="#">Ver Alertas</a></li>
                 </ul>
             </div>
-            <div>
+            <div class="footer_info">
                 <h4>Únete</h4>
                 <ul class="footer-datos">
                     <li><a href="#">Postular a Moderador</a></li>

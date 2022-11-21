@@ -2,7 +2,7 @@
 function ultimaALERTA()
 {
     $conexion = mysqli_connect("localhost", "root", "50bb11b76", "salvame");
-    $sql = "INSERT INTO alerta(id_marcador) VALUE ('1')";
+    $sql = "INSERT INTO alerta(id_marcador) VALUE ('46')";
     $result1 = mysqli_query($conexion, $sql);
     $last_id = $conexion->insert_id;
     $sql2 = "DELETE FROM alerta WHERE id_alerta='{$last_id}'";
@@ -23,15 +23,9 @@ if (!empty($_POST['añadir'])) {
     // }
     $sql2 = "UPDATE alerta set nombre='{$nombre}', dni='{$dni}',correo='{$correo}' where id_alerta='{$idalerta}'";
     $result2 = mysqli_query($conexion, $sql2);
+    header('./index.php');
 }
-
-
-
 ?>
-
-
-
-
 <!DOCTYPE html>
 <html lang="es">
 

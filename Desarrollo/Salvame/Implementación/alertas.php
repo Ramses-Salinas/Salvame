@@ -121,25 +121,36 @@ if (isset($_SESSION['id_usuario'])) {
             <div class='imagen'>
             <img src='data: image/jpeg; base64, " . base64_encode($valores["imagen_prueba"]) . "'></div>
             <div class='infocabecera'>
-                <label>Alerta " . $valores["id_alerta"] . "</label><br>
-                <label>" . $valores["nombre"] . "</label><br>
-                <label>Fecha:" . $valores["fecha"] . "</label><br>
+            <div class='blanco'>
+                <label class='numero'>Alerta " . $valores["id_alerta"] . "</label><br>
+                <label class='usuario'>" . $valores["nombre"] . "</label><br>
+                <label class='fecha'>Fecha: " . $valores["fecha"] . "</label><br>
             </div>
-            <button onclick='closeForm($id)'><img src='./imagenes/logo_colores.jpg'></button>
+            </div>
+            <button class='btncerrar'onclick='closeForm($id)'><img src='./imagenes/chevrone.png'></button>
         </div>
         
         <div class='nombreAnimal'>
-            <label>" . $valores["nombre_animal"] . "</label>
+            <label class='blanco'>" . $valores["nombre_animal"] . "</label>
             </div>
+            
             <div class='descripciones'>
                 <div class='Animal'>
-                    <label>Animal afectado <img src='#'></label>
+                <div class='solido'>
+                    <label>Animal afectado </label>
+                    
+                </div>
+                <div class='parrafo'>
                     <p>" . $valores["descri_animal"] . "</p>
             </div>
+                    </div>
             <div class='hechos'>
-                <label>Hechos<img src='#'></label>
+            <div class='solido'>
+                <label>Hechos</label>
+                </div>
+                <div class='parrafo'>
                 <p>" . $valores["descri_hechos"] . "</p>
-            </div>
+            </div></div>
         </div>
         </div>";
 
