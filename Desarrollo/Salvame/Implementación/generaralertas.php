@@ -11,8 +11,8 @@ if (!empty($latitud)) {
     $stmt->bindParam(':latitud', $latitud);
     $stmt->bindParam(':longitud', $longitud);
     if ($stmt->execute()) {
-        echo '<div class="alert alert-danger">ENVIO COORDS CORRECTO</div>';
-        header('Location: ../index.php');
+        // echo '<div class="alert alert-danger">ENVIO COORDS CORRECTO</div>';
+        // header('Location: ./index.php');
     }
 }
 // if (!empty($categoria)) {

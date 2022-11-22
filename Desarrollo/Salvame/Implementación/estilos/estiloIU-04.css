@@ -41,6 +41,9 @@ header {
     color: white;
     font-family: "Poppins", sans-serif;
 }
+#resultado-ubicacion{
+    font-size: medium;
+}
 #priv{
     height: 15vw;
     width: 18vw;
