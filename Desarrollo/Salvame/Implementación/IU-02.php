@@ -63,7 +63,7 @@ if (isset($_SESSION['id_usuario'])) {
             <a class="imagen-texto" href="./alertas.php"><img src="./imagenes/verAlertas.png" alt="" /> Ver Alertas</a>
         </div>
         <div class="menu-opcion__menu-opcion2">
-            <a class="imagen-texto" href="#"><img src="./imagenes/noun-candidate-1127322.png" alt="" /> Mis Alertas</a>
+            <a class="imagen-texto" href="#"><img src="./imagenes/misalertas.png" alt="" /> Mis Alertas</a>
             <a class="imagen-texto" href="IU-20.php"><img src="./imagenes/noun-documents-103655.png" alt="" />
                 Informes</a>
         </div>
