@@ -29,6 +29,7 @@
 </body>
      <script>
         function validarCampos() {
+            event.preventDefault();
             const emailInput = document.getElementById("correo");
             const passwordInput = document.getElementById("contrasenia");
             const email = emailInput.value;
@@ -47,6 +48,7 @@
 
             // Si ambos campos son válidos, redireccionar
             alert("Validado, pronto sera redirigido a la página principal")
+            location.href="index.html";
         }
     </script>
 </html>
