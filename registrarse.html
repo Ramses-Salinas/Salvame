@@ -36,6 +36,7 @@
             </form>
             <script>
  function validarFormulario() {
+            event.preventDefault();
             const correoInput = document.getElementById("correo");
             const passwordInput = document.getElementById("password");
             const confirmPasswordInput = document.getElementById("password2");
@@ -77,6 +78,7 @@
 
             // Si se llega hasta aquí, el formulario es válido y puede enviarse
             alert("El formulario se ha validado correctamente. Se puede enviar.");
+            location.href="index.html";
             // Aquí puedes agregar el código para enviar el formulario.
         }
             </script>
