@@ -99,7 +99,7 @@
     }
     
     function validarFormulario2() {
-    debugger
+    event.preventDefault();
     const nombres = document.getElementById("nombre").value;
     
     const apellidos = document.getElementById("apellido").value;
@@ -175,6 +175,7 @@
     */
     // Si the code reaches this point, the form is valid and can be submitted
     alert("El formulario se ha validado correctamente. Se puede enviar.");
+    location.href="index.html";    
     // You can add the code to submit the form here.
 }
     
