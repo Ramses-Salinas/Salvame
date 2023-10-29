@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="imagenes/logo_colores.jpg" />
+    <link rel="stylesheet" href="estilos/estiloregistrarse.css" />
+    <title>Registrarse</title>
+</head>
+
+<body>
+    <div class="ventana">
+        <div class="parte-1">
+            <h2>| Sálvame</h2>
+            <a href="./index.html">Inicio</a>
+        </div>
+        <div class="parte-2">
+            <h3>REGíSTRATE</h3>
+            <form action="registrarse.html">
+                <input id="correo" type="text" class="input" name="correo" placeholder="✉️ Correo electrónico" />
+                <input id="password" type="password" class="input" name="password" placeholder="🔒 Contraseña" />
+                <input id="password2" type="password" class="input" name="password2"
+                    placeholder="🔒Confirmar Contraseña" />
+                <input id="nombre" type="text" class="input" name="nombre" placeholder="🙍Nombre y Apellidos" />
+                <br />
+                <input id="checkbox-terminos" type="checkbox" name="checkbox-terminos" value="1" />
+                <label for="checkbox-terminos">He leído y acepto los términos y condiciones de “Sálvame”</label>
+                <br />
+                <input id="checkbox-notificaciones" type="checkbox" name="checkbox-notificaciones" value="1" />
+                <label for="checkbox-notificaciones">Quiero recibir notificaciones de las alertas e información
+                    relevante de la página</label>
+                <br />
+                <button name="btnlogin" class="btn" type="submit" id="envia" onclick="validarFormulario()" >Registrarme</button>
+            </form>
+            <script>
+ function validarFormulario() {
+            const correoInput = document.getElementById("correo");
+            const passwordInput = document.getElementById("password");
+            const confirmPasswordInput = document.getElementById("password2");
+            const nombresInput = document.getElementById("nombre");
+            const checkbox1 = document.getElementById("checkbox-terminos");
+            const checkbox2 = document.getElementById("checkbox-notificaciones");
+
+            const correo = correoInput.value;
+            const password = passwordInput.value;
+            const confirmPassword = confirmPasswordInput.value;
+            const nombres = nombresInput.value;
+
+            const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+            if (!emailRegex.test(correo)) {
+                alert("El campo de correo electrónico no es válido. Verifique el formato del correo.");
+                return;
+            }
+
+            if (password.length <= 4) {
+                alert("La contraseña debe tener más de 4 caracteres.");
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                alert("Las contraseñas no coinciden.");
+                return;
+            }
+
+            if (isblank(nombres) || nombres=="") {
+                alert("Por favor, complete los campos de nombres y apellidos.");
+                return;
+            }
+
+            if (!checkbox1.checked) {
+                alert("Debe aceptar los términos y condiciones.");
+                return;
+            }
+
+            // Si se llega hasta aquí, el formulario es válido y puede enviarse
+            alert("El formulario se ha validado correctamente. Se puede enviar.");
+            // Aquí puedes agregar el código para enviar el formulario.
+        }
+            </script>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,92 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Forum&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Megrim&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  min-height: 100vh;
+  background-color: #ffffb5c9;
+  background-image: url(../imagenes/fondo.png);
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+}
+.ventana {
+  width: 540px;
+  height: 350px;
+  margin: 148px auto;
+  display: flex;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 2px 2px 4px rgb(0 0 0 / 50%);
+}
+
+.parte-1 {
+  background-color: #36320a;
+  width: 220px;
+  color: white;
+  flex-direction: column;
+  display: flex;
+  padding: 125px 0; /* cambiar de acuerdo al cuadro*/
+  text-align: center;
+  align-items: center;
+}
+.parte-1 h2 {
+  font-family: "Megrim", cursive;
+  font-size: 30px;
+}
+.parte-1 a {
+  border: 2px solid #ffffff;
+  border-radius: 8px;
+  font-family: "Poppins", sans-serif;
+  color: white;
+  margin-top: 10px;
+  padding: 10px 20px;
+  text-decoration: none;
+}
+.parte-2 {
+  font-family: "Poppins", sans-serif;
+  background-color: #fff519;
+  display: flex;
+  width: 320px;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  padding: 100px 0; /* cambiar de acuerdo al cuadro*/
+}
+.parte-2 form input[type="text"],
+input[type="password"] {
+  background: #ffffb5;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-family: "Poppins", sans-serif;
+  border-radius: 10px;
+  height: 28px;
+  width: 220px;
+  margin: 10px;
+  border: none;
+  padding: 0 10px;
+}
+.parte-2 form input[type="submit"] {
+  font-family: "Poppins", sans-serif;
+  background-color: #36320a;
+  border-radius: 8px;
+  font-family: "Poppins", sans-serif;
+  color: white;
+  margin-top: 10px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+.parte-2 form button[id="envia"] {
+  font-family: "Poppins", sans-serif;
+  background-color: #36320a;
+  border-radius: 8px;
+  font-family: "Poppins", sans-serif;
+  color: white;
+  margin-top: 10px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}

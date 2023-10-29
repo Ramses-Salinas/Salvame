@@ -1,0 +1,277 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Forum&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Megrim&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+header {
+  display: flex;
+  height: 60px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #593920;
+}
+.nav-logo {
+  display: flex;
+}
+.nav-logo img {
+  height: 60px;
+  width:60px;
+}
+#multi{
+  display: flex;
+}
+#imagenes{
+  width: 30%;
+  height: 600px;
+  overflow-y: scroll;
+}
+#imagenes img{
+  width: 90%;
+  border-radius: 20px;  
+}
+img{
+  width: 100%;
+}
+#mapa {
+    height: 600px;
+    /* The height is 400 pixels */
+    width: 70%;
+    /* The width is the width of the web page */
+  }
+
+
+
+.opciones button{
+  border: none;
+  background-color: #9b9b9b;
+  font-family: "Poppins", sans-serif;
+  color: white;
+  border-radius: 8px;
+  padding: 8px;
+}
+button{
+  border: none;
+  background-color: #ffffff;
+}
+.boton{
+  padding: 10px;
+  margin: 10px;
+  background: #7cc67b;
+  border-radius: 8px;
+  text-decoration: none;
+  color: white;
+  font-family: "Poppins", sans-serif;
+}
+.titulo1 {
+  font-family: "Megrim", cursive;
+  font-weight: 500;
+  font-size: 4vw;
+  color: #593920;
+}
+section {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 5%;
+}
+form{
+  width: 100%;
+}
+.opciones {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%; 
+}
+
+#departamento, #fechas{
+  font-family: 'Poppins';
+  /* width: 100%; */
+  margin: 1%;
+  border-radius: 2.5vw;
+  font-size: 100%;
+  z-index: 1;
+  width: 30%;
+  color:#414141;
+  font-weight: bold;
+  padding: 8px;
+}
+footer {
+  background-color: #ffffb5;
+  margin-top: auto;
+}
+
+.footer {
+  padding: 30px 0;
+  display: flex;
+  justify-content: space-evenly;
+  border-bottom: solid 1px #593920;
+}
+
+.footer div {
+  font-family: "Forum", cursive;
+  width: 180px;
+}
+
+.integrantes {
+  margin: 10px 0;
+  list-style: none;
+  font-family: "Forum", cursive;
+  color: #593920;
+}
+
+.redes a img {
+  background-color: white;
+  padding: 5px;
+  margin: 5px 10px;
+  border: none;
+  border-radius: 10px;
+  width: 20px;
+}
+
+.redes a img:hover {
+  background-color: #7bc67b;
+}
+
+.footer-datos {
+  list-style: none;
+  margin: 10px 0;
+}
+
+.footer-datos a {
+  color: #593920;
+  text-decoration: none;
+}
+
+footer p {
+  margin-top: 30px;
+  color: #593920;
+  text-align: center;
+}
+
+
+
+
+/* The popup form - hidden by default */
+.info {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  top: 25%;
+  right: 25%;
+  border-radius: 5%;
+  z-index: 9;
+  width: 50%;
+  height: 70%;
+  background-color: #D9D9D9;
+  background-image: url(../imagenes/fondo1.png);
+}
+.cabecera {
+  display: flex;
+  height: 35%;
+}
+.imagen {
+  width: 40%;
+}
+.imagen img {
+  margin-top: 5%;
+  width: 100%;
+  height: 80%;
+}
+.infocabecera {
+  display: flex;
+  width: 50%;
+  justify-content: center;
+}
+.blanco{
+  display:block;
+  background-color:rgba(255, 255, 255, 0.49); ;
+  border-radius: 5%;
+  width: 80%;
+  height: 60%;
+  margin-top: 5%;
+  text-align: left;
+}
+.blanco label{
+  font-style: normal;
+  font-family: 'Poppins';
+  color: #000000;
+  margin-left: 5%;
+}
+.numero{
+    font-weight: 900;
+    font-size: 120%;
+}
+.usuario, .fecha{
+  font-weight: 400;
+  font-size: 100%;
+}
+.btncerrar{
+  margin-top: 2%;
+  width: 5%;
+  height: 30%;
+  background-color: transparent;
+}
+.nombreAnimal{
+  height: 15%;
+}
+.nombreAnimal .blanco{
+  align-items: center;
+  font-weight: 900;
+  font-size: 120%;
+  width: 60%;
+  margin-top: 0;
+  margin-top: 0;
+  /* text-align: center; */
+  justify-content: center;
+  display: flex;
+  margin-left: 3%;
+  
+}
+.descripciones {
+  width: 100%;
+  display: flex;
+  height: 50%;
+}
+
+.Animal, .hechos{
+  width: 100%;
+  height: 100%;
+  margin-left: 3%;
+}
+.solido{
+  background: #F5F5FA;
+  box-shadow: inset -2px -2px 4px rgb(255 255 255 / 50%), inset 2px 2px 4px rgb(170 170 204 / 25%), inset 5px 5px 10px rgb(170 170 204 / 50%), inset -5px -5px 10px #ffffff;
+  border-radius: 20px;
+  width: 90%;
+  height: 15%;
+  font-weight: 300;
+  font-size: 120%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.solido label{
+  margin-left: 10%;
+}
+.parrafo{
+  height: 75%;
+  background: #F5F5FA;
+  box-shadow: inset -2px -2px 4px rgb(255 255 255 / 50%), inset 2px 2px 4px rgb(170 170 204 / 25%), inset 5px 5px 10px rgb(170 170 204 / 50%), inset -5px -5px 10px #ffffff;
+  border-radius: 20px;
+  width: 90%;
+  margin-top: 5%;
+  text-align: center;
+}
+.parrafo p{
+  padding: 5%;
+}

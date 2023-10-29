@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="imagenes/logo_colores.jpg" />
+    <link rel="stylesheet" href="estilos/estilos-IU-12.css" />
+    <title>Postular</title>
+</head>
+
+<body>
+    <div class="ventana">
+
+        <div class="parte-1">
+            <h2>| Sálvame</h2>
+            <a href="./index.html">Inicio</a>
+            <!--SE PUDE MEHJORAR-->
+            <div class="foto-perfil" onclick="cargarImagen()">
+                <img id="view-new-upload-image" width="100%" height="100%" src="./imagenes/img-subir-foto.png" />
+            </div>
+        </div>
+
+        <div class="parte-2">
+            <form action="IU-12.html" class="postular-form">
+                <!-- IU-11 -->
+                <div class="pagina movPag">
+                    <h3>REGíSTRATE</h3>
+                    <input type="text" name="nombre"  id="nombre"placeholder="🙍 Nombre" />
+                    <input type="text" name="apellido"  id="apellido" placeholder="🙍 Apellido" />
+
+                    <select name="" id="tipoDocumento">
+                        <option value=""> 📄 Tipo de documento</option>
+                        <option value="DNI">DNI</option>
+                        <option value="Carnet">Carnet de extranjería</option>
+                    </select>
+                    <input type="text" name="numDocumento"  id="numeroDocumento" placeholder="#️⃣ Número de documento" />
+                    <input type="text" name="distrito"  id="distrito" placeholder="📍 Distrito" />
+                    <input type="text" name="dirección"  id="direccion"placeholder="🏠 Dirección" />
+                    <input type="text" name="correo"  id="correo" placeholder="✉️ Correo electrónico" />
+                    <input type="text" name="celular"  id="numeroCelular" placeholder="📞 Teléfono/Celular" />
+                    <select name="sexo" id="sexo">
+                        <option value=""> ⚥ Sexo</option>
+                        <option value="Femenino">Femenino</option>
+                        <option value="Masculino">Masculino</option>
+                    </select>
+                    <input type="date"  name="trip-start" min="1900-01-01" max="2004-12-31" id="fechaNacimiento">
+                    <input type="file" class="btn-img" accept="image/*" name="avatar" id="imagen" onchange="handleFileSelect()" />
+                    <br />
+                    <button onclick="validarFormulario2()" id="validar">Siguiente</button>
+                </div>
+    </div>
+    <!-- para la foto de usuario -->
+    <script>
+    function openFileSelector() {
+        let inputFile = document.getElementById("imagen");
+
+        if (inputFile) {
+            inputFile.click();
+        }
+    }
+
+    function cargarImagen() {
+        // Simular clic en el input de tipo archivo al hacer clic en la imagen
+        document.getElementById("imagen").click();
+    }
+
+    function handleFileSelect() {
+        const input = document.getElementById("imagen");
+        const file = input.files[0]; // Obtener el primer archivo seleccionado (puedes manejar múltiples archivos si es necesario)
+
+        if (file) {
+            // Validar el tamaño del archivo (en bytes)
+            const maxSize = 2 * 1024 * 1024; // 2MB
+            if (file.size > maxSize) {
+                alert("El tamaño del archivo es mayor a 2MB. Por favor, seleccione un archivo más pequeño.");
+                // Limpiar el input para permitir al usuario seleccionar otro archivo
+                input.value = "";
+                return;
+            }
+
+            // Mostrar una vista previa de la imagen (opcional)
+            showImagePreview(file);
+        }
+    }
+
+    function showImagePreview(file) {
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+            // Mostrar la vista previa de la imagen
+            const preview = document.getElementById("view-new-upload-image");
+            preview.src = e.target.result;
+        };
+
+        // Leer el contenido del archivo como una URL de datos
+        reader.readAsDataURL(file);
+    }
+    
+    function validarFormulario2() {
+    debugger
+    const nombres = document.getElementById("nombre").value;
+    
+    const apellidos = document.getElementById("apellido").value;
+    const tipoDocumento = document.getElementById("tipoDocumento").value;
+    const numeroDocumento = document.getElementById("numeroDocumento").value;
+    const distrito = document.getElementById("distrito").value;
+    const direccion = document.getElementById("direccion").value;
+    const correo = document.getElementById("correo").value;
+    const numeroCelular = document.getElementById("numeroCelular").value;
+    const sexo = document.getElementById("sexo").value;
+    const fechaNacimiento = document.getElementById("fechaNacimiento").value;
+    const imagen = document.getElementById("imagen").value;
+
+    if (nombres === "") {
+        alert("Por favor, ingrese su nombre.");
+        return;
+    }
+
+    if (apellidos === "") {
+        alert("Por favor, ingrese sus apellidos.");
+        return;
+    }
+
+    if (tipoDocumento === "DNI" && numeroDocumento.length !== 8) {
+        alert("El número de DNI debe tener 8 dígitos.");
+        return;
+    }
+
+    if (tipoDocumento === "Carnet de extranjería" && numeroDocumento.length !== 9) {
+        alert("El número de Carnet de extranjería debe tener 9 dígitos.");
+        return;
+    }
+
+    if (distrito === "") {
+        alert("Por favor, ingrese su distrito.");
+        return;
+    }
+
+    if (direccion === "") {
+        alert("Por favor, ingrese su dirección.");
+        return;
+    }
+
+    // Validación de correo electrónico
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$/;
+    if (!emailRegex.test(correo)) {
+        alert("El campo de correo electrónico no es válido. Verifique el formato del correo.");
+        return;
+    }
+
+    // Validación de número de celular
+    const celularRegex = /^[0-9]{9}$/; // Se asume un formato de 9 dígitos
+    if (!celularRegex.test(numeroCelular)) {
+        alert("El número de celular no es válido. Debe tener 9 dígitos.");
+        return;
+    }
+
+    if (sexo === "") {
+        alert("Por favor, seleccione su sexo.");
+        return;
+    }
+
+    if (fechaNacimiento === "") {
+        alert("Por favor, ingrese su fecha de nacimiento.");
+        return;
+    }
+
+    /*
+    if (!imagen) {
+        alert("Por favor, suba una imagen.");
+        return;
+    }
+    */
+    // Si the code reaches this point, the form is valid and can be submitted
+    alert("El formulario se ha validado correctamente. Se puede enviar.");
+    // You can add the code to submit the form here.
+}
+    
+    </script>
+    <!--llamada del script movimiento-->
+
+</body>
+
+</html>

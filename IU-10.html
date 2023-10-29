@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="imagenes/logo_colores.jpg" />
+    <link rel="stylesheet" href="estilos/estiloIU-10.css" />
+    <title>Datos Personales</title>
+</head>
+
+<body>
+    <div class="ventana">
+        <div class="parte-1">
+            <h2>| Sálvame</h2>
+            <a href="./index.html">Inicio</a>
+        </div>
+        <div class="parte-2">
+            <h3>DATOS PERSONALES</h3>
+            <form>
+                <input type="text" name="correo" id="correo" placeholder="✉️ Correo electrónico" />
+                <select name="" id="tipoDocumento">
+                    <option value=""> 📄Tipo de documento</option>
+                    <option value="DNI">DNI</option>
+                    <option value="Carnet">Carnet de extranjería</option>
+                </select>
+                <input type="text" name="dni" id="numeroDocumento" placeholder="📄 Número de documento" />
+                <br />
+                <input id="checkbox1" type="checkbox" />
+                <label for="checkbox1">He leído y acepto los términos y condiciones de “Sálvame”</label>
+                <br />
+                <input id="checkbox2" type="checkbox" name="notificaciones" />
+                <label for="checkbox2">Quiero recibir notificaciones de las alertas e información
+                    relevante de la página</label>
+                <br />
+                <button onclick="validarFormulario()">Añadir</button>
+                </input>
+            </form>
+        </div>
+    </div>
+</body>
+<script>
+    function validarFormulario() {
+        debugger
+            const correo = document.getElementById("correo").value;
+            const tipoDocumento = document.getElementById("tipoDocumento").value;
+            const numeroDocumento = document.getElementById("numeroDocumento").value;
+            const checkbox1 = document.getElementById("checkbox1").checked;
+            const checkbox2 = document.getElementById("checkbox2").checked;
+
+            // Validación de correo electrónico
+            const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            if (!emailRegex.test(correo)) {
+                alert("El campo de correo electrónico no es válido. Verifique el formato del correo.");
+                return;
+            }
+
+            // Validación de tipo de documento (DNI o Carnet)
+            if (tipoDocumento !== "dni" && tipoDocumento !== "carnet") {
+                alert("Por favor, seleccione un tipo de documento válido (DNI o Carnet).");
+                return;
+            }
+
+            // Validación de número de documento (DNI: 7 dígitos, Carnet: 8 dígitos)
+            const dniRegex = /^[0-9]{7}$/;
+            const carnetRegex = /^[0-9]{8}$/;
+            if ((tipoDocumento === "dni" && !dniRegex.test(numeroDocumento)) || (tipoDocumento === "carnet" && !carnetRegex.test(numeroDocumento))) {
+                alert("El número de documento no es válido.");
+                return;
+            }
+
+            // Validación del checkbox obligatorio (Opción 1)
+            if (!checkbox1) {
+                alert("Acepte los terminos y condiciones.");
+                return;
+            }
+
+            // Si se llega hasta aquí, el formulario es válido y puede enviarse
+            alert("El formulario se ha validado correctamente. Se puede enviar.");
+            // Aquí puedes agregar el código para enviar el formulario.
+        }
+</script>
+
+</html>

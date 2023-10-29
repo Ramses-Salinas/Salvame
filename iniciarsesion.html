@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="imagenes/logo_colores.jpg" />
+    <link rel="stylesheet" href="estilos/estiloiniciarsesion.css" />
+    <title>Iniciar Sesión</title>
+</head>
+
+<body>
+    <div class="ventana">
+        <div class="parte-1">
+            <h2>| Sálvame</h2>
+            <a href="./index.html">Inicio</a>
+        </div>
+        <div class="parte-2">
+            <h3>INICIAR SESIÓN</h3>
+            <form class="login-form">
+                <input id="correo" type="text" class="input" name="correo" placeholder="✉️ Correo electrónico" />
+                <input id="contrasenia" type="password" class="input" name="contrasenia" placeholder="🔒 Contraseña" />
+                <br>
+                <button name="btnlogin" class="btn" type="submit" id="envia" onclick="validarCampos()" >Ingresar</button>
+            </form>
+        </div>
+    </div>
+</body>
+     <script>
+        function validarCampos() {
+            const emailInput = document.getElementById("correo");
+            const passwordInput = document.getElementById("contrasenia");
+            const email = emailInput.value;
+            const password = passwordInput.value;
+            const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+            if (!emailRegex.test(email)) {
+                alert("El campo de correo electrónico no es válido. Verifique el formato del correo.");
+                return; // No se procesa la contraseña si el correo es inválido
+            }
+
+            if (password.length <= 4) {
+                alert("Ingrese una contraseña valida");
+                return; // No se procesa la redirección si la contraseña es inválida
+            }
+
+            // Si ambos campos son válidos, redireccionar
+            alert("Validado, pronto sera redirigido a la página principal")
+        }
+    </script>
+</html>
