@@ -42,7 +42,7 @@
 </body>
 <script>
     function validarFormulario() {
-        debugger
+            event.preventDefault();
             const correo = document.getElementById("correo").value;
             const tipoDocumento = document.getElementById("tipoDocumento").value;
             const numeroDocumento = document.getElementById("numeroDocumento").value;
@@ -78,6 +78,7 @@
 
             // Si se llega hasta aquí, el formulario es válido y puede enviarse
             alert("El formulario se ha validado correctamente. Se puede enviar.");
+            location.href="index.html";
             // Aquí puedes agregar el código para enviar el formulario.
         }
 </script>
