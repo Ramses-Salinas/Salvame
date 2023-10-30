@@ -33,7 +33,7 @@
                     <select name="" id="tipoDocumento">
                         <option value=""> 📄 Tipo de documento</option>
                         <option value="DNI">DNI</option>
-                        <option value="Carnet">Carnet de extranjería</option>
+                        <option value="Carnet de extranjería">Carnet de extranjería</option>
                     </select>
                     <input type="text" name="numDocumento"  id="numeroDocumento" placeholder="#️⃣ Número de documento" />
                     <input type="text" name="distrito"  id="distrito" placeholder="📍 Distrito" />
@@ -46,7 +46,7 @@
                         <option value="Masculino">Masculino</option>
                     </select>
                     <input type="date"  name="trip-start" min="1900-01-01" max="2004-12-31" id="fechaNacimiento">
-                    <input type="file" class="btn-img" accept="image/*" name="avatar" id="imagen" onchange="handleFileSelect()" />
+                    <input type="file" class="btn-img" accept="image/*" name="avatar" id="imagen" onchange="handleFileSelect()"/>
                     <br />
                     <button onclick="validarFormulario2()" id="validar">Siguiente</button>
                 </div>
@@ -71,16 +71,6 @@
         const file = input.files[0]; // Obtener el primer archivo seleccionado (puedes manejar múltiples archivos si es necesario)
 
         if (file) {
-            // Validar el tamaño del archivo (en bytes)
-            const maxSize = 2 * 1024 * 1024; // 2MB
-            if (file.size > maxSize) {
-                alert("El tamaño del archivo es mayor a 2MB. Por favor, seleccione un archivo más pequeño.");
-                // Limpiar el input para permitir al usuario seleccionar otro archivo
-                input.value = "";
-                return;
-            }
-
-            // Mostrar una vista previa de la imagen (opcional)
             showImagePreview(file);
         }
     }
@@ -114,12 +104,17 @@
     const imagen = document.getElementById("imagen").value;
 
     if (nombres === "") {
-        alert("Por favor, ingrese su nombre.");
+        alert("Por favor, ingrese su nombres.");
         return;
     }
 
     if (apellidos === "") {
         alert("Por favor, ingrese sus apellidos.");
+        return;
+    }
+
+    if (tipoDocumento === "") {
+        alert("Por favor, elija un tipo de documento.");
         return;
     }
 
@@ -167,12 +162,20 @@
         return;
     }
 
-    /*
+    
     if (!imagen) {
         alert("Por favor, suba una imagen.");
         return;
     }
-    */
+
+    const input = document.getElementById("imagen");
+    const maxSize = 150 * 1024; // 2MB
+    if(input.files[0].size>maxSize){
+        alert("Por favor, inserte una foto de perfil de hasta 2MB.");
+        // Limpiar el input para permitir al usuario seleccionar otro archivo
+        return;
+    }
+    
     // Si the code reaches this point, the form is valid and can be submitted
     alert("El formulario se ha validado correctamente. Se puede enviar.");
     location.href="index.html";    
